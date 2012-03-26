@@ -1,30 +1,13 @@
 <?php
 
-new LDWPPR_News;
-class LDWPPR_News extends LDWPPR_CustomPostType {
+new PNE_News;
+class PNE_News extends PNE_Custom_Post_Type {
 	var $slug = 'news';
 	var $archive_slug = 'news';
 	var $singular = "News Story";
 	var $plural = "News Stories";
 	var $supports = array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions');
 	
-	function __construct() {
-		parent::__construct();
-		add_theme_support('post-thumbnails');
-		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
-		add_shortcode('news', array($this, 'shortcode'));
-	}
-
-	function scripts_styles() {
-	    wp_enqueue_script(
-			'ldwppr_news', // handle 
-			$path = plugins_url('news.js', __FILE__), // path
-			array('jquery', 'ldwppr_datepicker'), // dependencies
-			'1.0', // version
-			true // in footer
-		);
-	}
-
 	function meta_boxes() {
 		parent::meta_boxes();
 		
@@ -41,21 +24,21 @@ class LDWPPR_News extends LDWPPR_CustomPostType {
 		parent::options($post);
 		
 		$meta = get_post_custom($post->ID);
-		extract(wp_parse_args(array(
+		extract(array(
 			'link' => $meta['_link'][0],
 			'date' => $meta['_date'][0],
-		), $this->defaults));
+		));
 		
 		$date_string = $date ? date('Y-m-j', $date) : '';
 		?>
 		
-		<table>
+		<table class="pne_news_options">
 			<tr>
 				<td><label>Link:</label></td>
 				<td>
 					<input
 						type="text"
-						name="ldwppr_news[link]"
+						name="pne_news[link]"
 						value="<?=esc_attr($link)?>"
 					/>
 					<?php if (!empty($link)) { ?>
@@ -66,11 +49,11 @@ class LDWPPR_News extends LDWPPR_CustomPostType {
 			<tr>
 				<td><label>News Date:</label></td>
 				<td>
-					<div class="ldwppr_date_picker"></div>
+					<div class="date_picker"></div>
 					<input
 						type="text"
-						class="ldwppr_news_date"
-						name="ldwppr_news[date]"
+						class="date"
+						name="pne_news[date]"
 						value="<?=esc_attr($date_string)?>"
 					/>
 				</td>
@@ -82,21 +65,12 @@ class LDWPPR_News extends LDWPPR_CustomPostType {
 	function save($post_id) {
 		if (parent::save($post_id)) return $post_id;
 		
-		if ($options = $_POST['ldwppr_news']) {
-			extract(wp_parse_args($_POST['ldwppr_news'], array(
-				'link' => false,
-				'date' => false,
-			)));
-			
-			if ($link) {
-				$link = trim($link);
-				if (!preg_match("/^https?:\/\//", $link)) $link = "http://$link";
-			}
-			
-			$date = strtotime($date);
+		if ($meta = $_POST['pne_news']) {
+			$link = trim($meta['link']);
+			if ($link && !preg_match("/^https?:\/\//", $link)) $link = "http://$link";
 
 			update_post_meta($post_id, '_link', $link);
-			update_post_meta($post_id, '_date', $date);
+			update_post_meta($post_id, '_date', strtotime($meta['date']));
 		}
 	}
 	
@@ -105,8 +79,8 @@ class LDWPPR_News extends LDWPPR_CustomPostType {
 	function columns($columns) {
 		unset($columns['comments']);
 		unset($columns['date']);
-		$columns[$this->slug.'_date'] = "Date";
-		$columns[$this->slug.'_link'] = "Link";
+		$columns['pne_news_date'] = "Date";
+		$columns['pne_news_link'] = "Link";
 		
 		return $columns;
 	}
@@ -115,11 +89,11 @@ class LDWPPR_News extends LDWPPR_CustomPostType {
 		global $post;
 		
 		switch ($column) {
-			case $this->slug.'_date':
-				echo LDWPPR::pretty_date_range(get_post_meta($post->ID, '_date', true));
+			case 'pne_news_date':
+				echo Press_News_Events::pretty_date_range(get_post_meta($post->ID, '_date', true));
 				break;
 			
-			case $this->slug.'_link':
+			case 'pne_news_link':
 				$link = get_post_meta($post->ID, '_link', true);
 				if (!empty($link)) echo "<a href='$link' target='_blank'>$link</a>";
 				break;

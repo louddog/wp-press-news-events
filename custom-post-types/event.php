@@ -1,7 +1,7 @@
 <?php
 
-new LDWPPR_Events;
-class LDWPPR_Events extends LDWPPR_CustomPostType {
+new PNE_Event;
+class PNE_Event extends PNE_Custom_Post_Type {
 	var $slug = 'event';
 	var $archive_slug = 'events';
 	var $singular = "Event";
@@ -9,8 +9,6 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	
 	function __construct() {
 		parent::__construct();
-		
-		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
 
 		$this->new_rules();
 		add_filter('rewrite_rules_array', array($this, 'insert_rewrite_rules'));
@@ -20,16 +18,6 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 		add_filter('posts_where', array($this, 'posts_where'));
 		add_filter('posts_orderby', array($this, 'posts_orderby'));
 		add_filter('post_limits', array($this, 'post_limits'));
-	}
-	
-	function scripts_styles() {
-	    wp_enqueue_script(
-			'ldwppr_events', // handle 
-			$path = plugins_url('events.js', __FILE__), // path
-			array('jquery', 'ldwppr_datepicker'), // dependencies
-			'1.0', // version
-			true // in footer
-		);
 	}
 
 	// Admin ------------------------------------------------------------------
@@ -64,16 +52,21 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 		if (!isset($meta['_all_day'])) $all_day = true;
 		?>
 		
-		<table>
+		<table class="pne_event_options">
 			<tr>
 				<td><label>Location:</label></td>
-				<td><textarea name="ldwppr_event[location]" rows="4"><?=$location?></textarea></td>
+				<td><textarea name="pne_event[location]" rows="4"><?=$location?></textarea></td>
 			</tr>
 			<tr>
-				<td><label>Date:</label></td>
+				<td><label>Event Date:</label></td>
 				<td>
-					<div class="ldwppr_date_picker"></div>
-					<input type="text" class="ldwppr_event_date" name="ldwppr_event[date]" value="<?=esc_attr($date_string)?>" />
+					<div class="date_picker"></div>
+					<input
+						type="text"
+						class="date_range"
+						name="pne_event[date]"
+						value="<?=esc_attr($date_string)?>"
+					/>
 				</td>
 			</tr>
 			<tr>
@@ -82,18 +75,30 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 					<p>
 						<input
 							type="checkbox"
-							name="ldwppr_event[all_day]"
-							id="ldwppr_event_all_day"
+							class="all_day"
+							name="pne_event[all_day]"
 							<?php if ($all_day) echo 'checked'; ?>
 							<?php if ($starts != $ends) echo 'disabled'; ?>
 						/>
-						<label for="ldwppr_event_all_day">All Day</label>
+						<label for="pne_event_all_day">All Day</label>
 					</p>
 					
-					<p id="ldwppr_event_time_options">
-						<input type="text" size="7" name="ldwppr_event[start_time]" value="<?=esc_attr(date('g:ia', $starts))?>" placeholder="6:30pm" />
+					<p class="event_times">
+						<input
+							type="text"
+							size="7"
+							name="pne_event[start_time]"
+							value="<?=esc_attr(date('g:ia', $starts))?>"
+							placeholder="6:30pm"
+						/>
 						to
-						<input type="text" size="7" name="ldwppr_event[end_time]" value="<?=esc_attr(date('g:ia', $ends))?>" placeholder="9:30pm" />
+						<input
+							type="text"
+							size="7"
+							name="pne_event[end_time]"
+							value="<?=esc_attr(date('g:ia', $ends))?>"
+							placeholder="9:30pm"
+						/>
 					</p>
 				</td>
 			</tr>
@@ -117,22 +122,22 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	function save($post_id) {
 		if (parent::save($post_id)) return $post_id;
 		
-		if ($options = $_POST['ldwppr_event']) {
+		if ($meta = $_POST['pne_event']) {
 			$start_date = $end_date = current_time('timestamp');
 			
-			if (!empty($options['date'])) {
-				$dates = explode(',', $options['date']);
+			if (!empty($meta['date'])) {
+				$dates = explode(',', $meta['date']);
 				$start_date = strtotime($dates[0]);
 				$end_date = count($dates) > 1 ? strtotime($dates[1]) : $start_date;
 			}
 
-			$start_time = strtotime(trim($options['start_time']));
-			$end_time = strtotime(trim($options['end_time']));
+			$start_time = strtotime(trim($meta['start_time']));
+			$end_time = strtotime(trim($meta['end_time']));
 			
 			// TODO: if all-day, set start and end times to 12:00am and 11:59pm
 			
-			update_post_meta($post_id, '_location', trim($options['location']));
-			update_post_meta($post_id, '_all_day', isset($options['all_day']) || !$start_time);
+			update_post_meta($post_id, '_location', trim($meta['location']));
+			update_post_meta($post_id, '_all_day', isset($meta['all_day']) || !$start_time);
 			update_post_meta($post_id, '_starts', $this->combined_date($start_date, $start_time));
 			update_post_meta($post_id, '_ends', $this->combined_date($end_date, $end_time));
 		}
@@ -143,7 +148,7 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	function columns($columns) {
 		unset($columns['comments']);
 		unset($columns['date']);
-		$columns[$this->slug.'_date'] = "Date";
+		$columns['pne_event_date'] = "Date";
 		
 		return $columns;
 	}
@@ -152,12 +157,15 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 		global $post;
 		
 		switch ($column) {
-			case $this->slug.'_date':
-				echo LDWPPR::pretty_date_range(
-					get_post_meta($post->ID, '_starts', true),
-					get_post_meta($post->ID, '_ends', true),
-					get_post_meta($post->ID, '_all_day', true)
-				);
+			case 'pne_event_date':
+				$meta = get_post_custom($post->ID);
+				extract(array(
+					'starts' => $meta['_starts'][0],
+					'ends' => $meta['_ends'][0],
+					'all_day' => $meta['_all_day'][0],
+				));
+				
+				if ($starts) echo Press_News_Events::pretty_date_range($starts, $ends, $all_day);
 				
 				break;
 		}
@@ -171,8 +179,8 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	
 	function new_rules() {
 		$this->rewrite_rules = array(
-			$this->archive_slug.'/archive$' => 'index.php?post_type='.$this->slug.'&archive_type=past',
-			$this->archive_slug.'/archive/page/([0-9]+)$' => 'index.php?post_type='.$this->slug.'&archive_type=past&paged=$matches[1]',
+			$this->archive_slug.'/archive$' => 'index.php?post_type='.$this->slug.'&pne_archive_type=past',
+			$this->archive_slug.'/archive/page/([0-9]+)$' => 'index.php?post_type='.$this->slug.'&pne_archive_type=past&paged=$matches[1]',
 		);
 	}
 	
@@ -181,7 +189,7 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	}
 
 	function insert_query_vars($vars) {
-	    array_push($vars, 'archive_type');
+	    array_push($vars, 'pne_archive_type');
 	    return $vars;
 	}
 	
@@ -208,7 +216,7 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	function posts_where($where) {
 		global $wpdb;
 		if ($this->can_modify_query()) {
-			$compare = get_query_var('archive_type') == 'past' ? '<' : '>';
+			$compare = get_query_var('pne_archive_type') == 'past' ? '<' : '>';
 			$time = current_time('timestamp') - 43200; // compare against 12 hours ago
 			$where .= " AND COALESCE(ends.meta_value, starts.meta_value) $compare $time";
 		}
@@ -218,14 +226,14 @@ class LDWPPR_Events extends LDWPPR_CustomPostType {
 	function posts_orderby($orderby) {
 		global $wpdb;
 		if ($this->can_modify_query()) {
-			$order = get_query_var('archive_type') == 'past' ? 'DESC' : 'ASC';
+			$order = get_query_var('pne_archive_type') == 'past' ? 'DESC' : 'ASC';
 			$orderby = "starts.meta_value $order, $wpdb->posts.post_date $order";
 		}
 		return $orderby;
 	}
 	
 	function post_limits($limit) {
-		if ($this->can_modify_query() && get_query_var('archive_type') != 'past') {
+		if ($this->can_modify_query() && get_query_var('pne_archive_type') != 'past') {
 			$limit = '';
 		}
 		return $limit;

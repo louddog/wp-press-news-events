@@ -1,36 +1,45 @@
 <?php
 /*
-Plugin Name: PR for WP by Loud Dog (LDWPPR)
-Description: Create events, press releases and links to news stories.
+Plugin Name: Press, News and Events
+Description: Create custom post types for press releases, references to external news stories, and events.
 Author: Loud Dog
 Version: 1.0
 Author URI: http://www.louddog.com
 */
 
-new LDWPPR;
-class LDWPPR {
+new Press_News_Events;
+class Press_News_Events {
 	function __construct() {
 		$dir = dirname(__FILE__);
-		require $dir.'/cpt.php';
-		require $dir.'/event.php';
-		require $dir.'/press-release.php';
-		require $dir.'/news.php';
+		require "$dir/custom-post-type.php";
+		foreach (glob("$dir/custom-post-types/*.php") as $file) {
+			require($file);
+		}
 
+		add_theme_support('post-thumbnails');
 		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
 	}
 	
 	function scripts_styles() {
 	    wp_enqueue_style(
-			'ldwppr', // handle 
-			plugins_url('ldwppr.css', __FILE__), // path
+			'pne_admin', // handle 
+			plugins_url('css/admin.css', __FILE__), // path
 			array(), // dependencies
 			'1.0' // version
 		);
 
 	    wp_register_script(
-			'ldwppr_datepicker', // handle 
-			plugins_url('datepicker.js', __FILE__), // path
+			'pne_datepicker', // handle 
+			plugins_url('js/datepicker.js', __FILE__), // path
 			array('jquery'), // dependencies
+			'1.0', // version
+			true // in footer
+		);
+
+	    wp_enqueue_script(
+			'pne_admin', // handle 
+			$path = plugins_url('js/admin.js', __FILE__), // path
+			array('jquery', 'pne_datepicker'), // dependencies
 			'1.0', // version
 			true // in footer
 		);

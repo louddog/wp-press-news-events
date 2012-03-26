@@ -1,6 +1,6 @@
 <?php
 
-abstract class LDWPPR_CustomPostType {
+abstract class PNE_Custom_Post_Type {
 	var $slug = 'custom_post_type';
 	var $archive_slug = false; // use pluralized string if you want an archive page
 	var $singular = "Item";
@@ -39,7 +39,7 @@ abstract class LDWPPR_CustomPostType {
 			'public' => $this->public,
 			'show_ui' => $this->show_ui,
 			'menu_position' => $this->menu_position,
-			'menu_icon' => $this->menu_icon ? get_bloginfo('stylesheet_directory')."/images/admin/icons/$this->menu_icon.png" : null,
+			'menu_icon' => $this->menu_icon ? plugins_url("/icons/$this->menu_icon.png", __FILE__) : null,
 			'capability_type' => 'post',
 			'hierarchical' => $this->hierarchical,
 			'supports' => $this->supports,
@@ -54,12 +54,12 @@ abstract class LDWPPR_CustomPostType {
 	function meta_boxes() { /* do nothing */ }
 	
 	function options($post) {
-		wp_nonce_field(plugin_basename(__FILE__), 'ldwppr_nonce_'.$this->slug);
+		wp_nonce_field(plugin_basename(__FILE__), 'pne_nonce_'.$this->slug);
 	}
 
 	function save($post_id) {
-		if (!isset($_POST['ldwppr_nonce_'.$this->slug])) return $post_id;
-		if (!wp_verify_nonce($_POST['ldwppr_nonce_'.$this->slug], plugin_basename(__FILE__))) return $post_id;
+		if (!isset($_POST['pne_nonce_'.$this->slug])) return $post_id;
+		if (!wp_verify_nonce($_POST['pne_nonce_'.$this->slug], plugin_basename(__FILE__))) return $post_id;
 		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $post_id;
 		if ($_POST['post_type'] != $this->slug) return $post_id;
 		if (!current_user_can('edit_post', $post_id)) return $post_id;
