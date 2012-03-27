@@ -20,6 +20,7 @@ abstract class PNE_Custom_Post_Type {
 		add_action('manage_edit-'.$this->slug.'_columns', array($this, 'columns'));
 		add_action('manage_posts_custom_column', array($this, 'column'));
 		add_action('manage_pages_custom_column', array($this, 'column'));
+		add_action('admin_notices', array($this, 'admin_notices'));
 	}
 	
 	function register() {
@@ -67,4 +68,23 @@ abstract class PNE_Custom_Post_Type {
 	
 	function columns($columns) { return $columns; }
 	function column($column) { /* do nothing */ }
+	
+	function admin_notices() {
+		$notices = get_option('pne_admin_notices', array());
+		
+		if (count($notices)) {
+			foreach ($notices as $notice) { ?>
+				<div class="updated">
+					<p><?php echo $notice; ?></p>
+				</div>
+			<?php }
+			delete_option('pne_admin_notices');
+		}
+	}
+
+	function add_admin_notice($notice) {
+		$notices = get_option('pne_admin_notices', array());
+		$notices[] = $notice;
+		update_option('pne_admin_notices', $notices);
+	}
 }
