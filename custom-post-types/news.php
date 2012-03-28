@@ -3,17 +3,35 @@
 new PNE_News;
 class PNE_News extends PNE_Custom_Post_Type {
 	var $slug = 'news';
-	var $archive_slug = 'news';
-	var $singular = "News Story";
-	var $plural = "News Stories";
 	var $supports = array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions');
+
+	function __construct() {
+		$this->archive_slug = _x("news", 'url segment', 'press-news-and-events');
+		$this->singular = _n("News Story", "News Stories", 1, 'press-news-and-events');
+		$this->plural = _n("News Story", "News Stories", 2, 'press-news-and-events');
+
+		$this->labels = array(
+			'name' => _n("News Story", "News Stories", 1, 'press-news-and-events'),
+			'singular_name' => _n("News Story", "News Stories", 2, 'press-news-and-events'),
+			'add_new' => __("Add New News Story", 'press-news-and-events'),
+			'add_new_item' => __("Add New News Story", 'press-news-and-events'),
+			'edit_item' => __("Edit News Story", 'press-news-and-events'),
+			'new_item' => __("New News Story", 'press-news-and-events'),
+			'view_item' => __("View News Story", 'press-news-and-events'),
+			'search_items' => __("Search News Stories", 'press-news-and-events'),
+			'not_found' => __("No News Stories found", 'press-news-and-events'),
+			'not_found_in_trash' => __("No News Stories found in Trash", 'press-news-and-events'),
+		);
+
+		parent::__construct();
+	}
 	
 	function meta_boxes() {
 		parent::meta_boxes();
 		
 		add_meta_box(
 			$this->slug."-options",
-			$this->singular." Options",
+			sprintf(__("Options", 'press-news-and-events'), $this->singular),
 			array($this, 'options'),
 			$this->slug,
 			'side'
@@ -34,7 +52,7 @@ class PNE_News extends PNE_Custom_Post_Type {
 		
 		<table class="pne_news_options">
 			<tr>
-				<td><label>Link:</label></td>
+				<td><label><?=__("Link:", 'press-news-and-events')?></label></td>
 				<td>
 					<input
 						type="text"
@@ -42,12 +60,12 @@ class PNE_News extends PNE_Custom_Post_Type {
 						value="<?=esc_attr($link)?>"
 					/>
 					<?php if (!empty($link)) { ?>
-						<a href="<?=$link?>" target="_blank">link</a>
+						<a href="<?=$link?>" target="_blank"><?=__("link", 'press-news-and-events')?></a>
 					<?php } ?>
 				</td>
 			</tr>
 			<tr>
-				<td><label>News Date:</label></td>
+				<td><label><?=__("News Date:", 'press-news-and-events')?></label></td>
 				<td>
 					<div class="date_picker"></div>
 					<input
@@ -79,8 +97,8 @@ class PNE_News extends PNE_Custom_Post_Type {
 	function columns($columns) {
 		unset($columns['comments']);
 		unset($columns['date']);
-		$columns['pne_news_date'] = "Date";
-		$columns['pne_news_link'] = "Link";
+		$columns['pne_news_date'] = _x("Date", 'column header', 'press-news-and-events');
+		$columns['pne_news_link'] = _x("Link", 'column header', 'press-news-and-events');
 		
 		return $columns;
 	}

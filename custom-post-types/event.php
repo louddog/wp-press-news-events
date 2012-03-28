@@ -3,11 +3,25 @@
 new PNE_Event;
 class PNE_Event extends PNE_Custom_Post_Type {
 	var $slug = 'event';
-	var $archive_slug = 'events';
-	var $singular = "Event";
-	var $plural = "Events";
 	
 	function __construct() {
+		$this->archive_slug = _x("events", 'url segment', 'press-news-and-events');
+		$this->singular = _n("Event", "Events", 1, 'press-news-and-events');
+		$this->plural = _n("Event", "Events", 2, 'press-news-and-events');
+		
+		$this->labels = array(
+			'name' => _n("Event", "Events", 1, 'press-news-and-events'),
+			'singular_name' => _n("Event", "Events", 2, 'press-news-and-events'),
+			'add_new' => __("Add New Event", 'press-news-and-events'),
+			'add_new_item' => __("Add New Event", 'press-news-and-events'),
+			'edit_item' => __("Edit Event", 'press-news-and-events'),
+			'new_item' => __("New Event", 'press-news-and-events'),
+			'view_item' => __("View Event", 'press-news-and-events'),
+			'search_items' => __("Search Events", 'press-news-and-events'),
+			'not_found' => __("No Events found", 'press-news-and-events'),
+			'not_found_in_trash' => __("No Events found in Trash", 'press-news-and-events'),
+		);
+
 		parent::__construct();
 
 		$this->new_rules();
@@ -27,7 +41,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		
 		add_meta_box(
 			$this->slug."-options",
-			$this->singular." Options",
+			sprintf(__("Options", 'press-news-and-events'), $this->singular),
 			array($this, 'options'),
 			$this->slug,
 			'side'
@@ -54,11 +68,11 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		
 		<table class="pne_event_options">
 			<tr>
-				<td><label>Location:</label></td>
+				<td><label><?=__("Location:", 'press-news-and-events')?></label></td>
 				<td><textarea name="pne_event[location]" rows="4"><?=$location?></textarea></td>
 			</tr>
 			<tr>
-				<td><label>Event Date:</label></td>
+				<td><label><?=__("Event Date:", 'press-news-and-events')?></label></td>
 				<td>
 					<div class="date_picker"></div>
 					<input
@@ -70,7 +84,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 				</td>
 			</tr>
 			<tr>
-				<td><label>Time:</label></td>
+				<td><label><?=__("Time:", 'press-news-and-events')?></label></td>
 				<td>
 					<p>
 						<input
@@ -80,7 +94,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 							<?php if ($all_day) echo 'checked'; ?>
 							<?php if ($starts != $ends) echo 'disabled'; ?>
 						/>
-						<label for="pne_event_all_day">All Day</label>
+						<label for="pne_event_all_day"><?=__("All Day", 'press-news-and-events')?></label>
 					</p>
 					
 					<p class="event_times">
@@ -89,15 +103,15 @@ class PNE_Event extends PNE_Custom_Post_Type {
 							size="7"
 							name="pne_event[start_time]"
 							value="<?=esc_attr(date('g:ia', $starts))?>"
-							placeholder="6:30pm"
+							placeholder="<?=esc_attr(__("6:30pm", 'press-news-and-events'))?>"
 						/>
-						to
+						<?=_x("to", 'starting time *to* ending time', 'press-news-and-events')?>
 						<input
 							type="text"
 							size="7"
 							name="pne_event[end_time]"
 							value="<?=esc_attr(date('g:ia', $ends))?>"
-							placeholder="9:30pm"
+							placeholder="<?=esc_attr(__("9:30pm", 'press-news-and-events'))?>"
 						/>
 					</p>
 				</td>
@@ -148,7 +162,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 	function columns($columns) {
 		unset($columns['comments']);
 		unset($columns['date']);
-		$columns['pne_event_date'] = "Date";
+		$columns['pne_event_date'] = _x("Date", 'column header', 'press-news-and-events');
 		
 		return $columns;
 	}

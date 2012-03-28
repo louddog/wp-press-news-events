@@ -3,8 +3,10 @@
 abstract class PNE_Custom_Post_Type {
 	var $slug = 'custom_post_type';
 	var $archive_slug = false; // use pluralized string if you want an archive page
-	var $singular = "Item";
-	var $plural = "Items";
+	var $singular = false;
+	var $plural = false;
+	
+	var $labels = false;
 	
 	var $public = true;
 	var $show_ui = true;
@@ -25,18 +27,7 @@ abstract class PNE_Custom_Post_Type {
 	
 	function register() {
 		register_post_type($this->slug, array_merge(array(
-			'labels' => array(
-				'name' => $this->plural,
-				'singular_name' => $this->singular,
-				'add_new' => "Add New $this->singular",
-				'add_new_item' => "Add New $this->singular",
-				'edit_item' => "Edit $this->singular",
-				'new_item' => "New $this->singular",
-				'view_item' => "View $this->singular",
-				'search_items' => "Search $this->plural",
-				'not_found' => "No $this->plural found",
-				'not_found_in_trash' => "No $this->plural found in Trash",
-			),
+			'labels' => $this->labels ? $this->labels : array(),
 			'public' => $this->public,
 			'show_ui' => $this->show_ui,
 			'menu_position' => $this->menu_position,

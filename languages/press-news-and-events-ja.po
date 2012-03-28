@@ -1,0 +1,212 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Press, News and Events \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-and-events\n"
+"POT-Creation-Date: 2012-03-28 23:01:12+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-03-28 16:02-0800\n"
+"Last-Translator: Loud Dog <info@louddog.com>\n"
+"Language-Team: Loud Dog <info@louddog.com> \n"
+
+#: custom-post-types/event.php:8
+msgctxt "url segment"
+msgid "events"
+msgstr "イベント"
+
+#: custom-post-types/event.php:9 custom-post-types/event.php:10
+#: custom-post-types/event.php:13 custom-post-types/event.php:14
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] "イベント"
+msgstr[1] "イベント"
+
+#: custom-post-types/event.php:15 custom-post-types/event.php:16
+msgid "Add New Event"
+msgstr "新しいイベントを追加する"
+
+#: custom-post-types/event.php:17
+msgid "Edit Event"
+msgstr "イベントを編集します。"
+
+#: custom-post-types/event.php:18
+msgid "New Event"
+msgstr "イベントを編集します。"
+
+#: custom-post-types/event.php:19
+msgid "View Event"
+msgstr "イベントを見る"
+
+#: custom-post-types/event.php:20
+msgid "Search Events"
+msgstr "イベント検索"
+
+#: custom-post-types/event.php:21
+msgid "No Events found"
+msgstr "何のイベントが見つかりませんでした"
+
+#: custom-post-types/event.php:22
+msgid "No Events found in Trash"
+msgstr "何もイベントがゴミ箱に見つかりません"
+
+#: custom-post-types/event.php:44 custom-post-types/news.php:34
+msgid "Options"
+msgstr "オプション"
+
+#: custom-post-types/event.php:71
+msgid "Location:"
+msgstr "場所："
+
+#: custom-post-types/event.php:75
+msgid "Event Date:"
+msgstr "イベント日："
+
+#: custom-post-types/event.php:87
+msgid "Time:"
+msgstr "時間："
+
+#: custom-post-types/event.php:97
+msgid "All Day"
+msgstr "終日"
+
+#: custom-post-types/event.php:106
+msgid "6:30pm"
+msgstr "18:30"
+
+#: custom-post-types/event.php:108
+msgctxt "starting time *to* ending time"
+msgid "to"
+msgstr "へ"
+
+#: custom-post-types/event.php:114
+msgid "9:30pm"
+msgstr "21:30"
+
+#: custom-post-types/event.php:165 custom-post-types/news.php:100
+msgctxt "column header"
+msgid "Date"
+msgstr "日付"
+
+#: custom-post-types/news.php:9
+msgctxt "url segment"
+msgid "news"
+msgstr "ニュース"
+
+#: custom-post-types/news.php:10 custom-post-types/news.php:11
+#: custom-post-types/news.php:14 custom-post-types/news.php:15
+msgid "News Story"
+msgid_plural "News Stories"
+msgstr[0] "ニュース記事"
+msgstr[1] "ニュース"
+
+#: custom-post-types/news.php:16 custom-post-types/news.php:17
+msgid "Add New News Story"
+msgstr "新しいニュースを追加ストーリー"
+
+#: custom-post-types/news.php:18
+msgid "Edit News Story"
+msgstr "ニュース記事を編集"
+
+#: custom-post-types/news.php:19
+msgid "New News Story"
+msgstr "新しいニュース·ストーリー"
+
+#: custom-post-types/news.php:20
+msgid "View News Story"
+msgstr "ニュース記事を見る"
+
+#: custom-post-types/news.php:21
+msgid "Search News Stories"
+msgstr "検索ニュースストーリー"
+
+#: custom-post-types/news.php:22
+msgid "No News Stories found"
+msgstr "いいえニュース記事は見つかりませんでした"
+
+#: custom-post-types/news.php:23
+msgid "No News Stories found in Trash"
+msgstr "いいえニュース記事では、ゴミ箱に見つかりません"
+
+#: custom-post-types/news.php:55
+msgid "Link:"
+msgstr "リンク："
+
+#: custom-post-types/news.php:63
+msgid "link"
+msgstr "リンク"
+
+#: custom-post-types/news.php:68
+msgid "News Date:"
+msgstr "ニュース日付："
+
+#: custom-post-types/news.php:101
+msgctxt "column header"
+msgid "Link"
+msgstr "リンク"
+
+#: custom-post-types/press-release.php:8
+msgctxt "url segment"
+msgid "press-releases"
+msgstr "プレスリリース"
+
+#: custom-post-types/press-release.php:9
+#: custom-post-types/press-release.php:10
+#: custom-post-types/press-release.php:13
+#: custom-post-types/press-release.php:14
+msgid "Press Release"
+msgid_plural "Press Releases"
+msgstr[0] "プレスリリース"
+msgstr[1] "プレスリリース"
+
+#: custom-post-types/press-release.php:15
+#: custom-post-types/press-release.php:16
+msgid "Add New Press Release"
+msgstr "新しいプレスリリースを追加します。"
+
+#: custom-post-types/press-release.php:17
+msgid "Edit Press Release"
+msgstr "プレスリリースを編集します。"
+
+#: custom-post-types/press-release.php:18
+msgid "New Press Release"
+msgstr "新しいプレスリリース"
+
+#: custom-post-types/press-release.php:19
+msgid "View Press Release"
+msgstr "プレスリリースを見る"
+
+#: custom-post-types/press-release.php:20
+msgid "Search Press Releases"
+msgstr "プレスリリースを検索"
+
+#: custom-post-types/press-release.php:21
+msgid "No Press Releases found"
+msgstr "いいえプレスリリースが見つかりませんでした"
+
+#: custom-post-types/press-release.php:22
+msgid "No Press Releases found in Trash"
+msgstr "いいえプレスリリースをゴミ箱に見つかりません"
+
+#: custom-post-types/press-release.php:34
+#: custom-post-types/press-release.php:44
+msgid "Press Release Boilerplate"
+msgstr "リリースボイラーを押してください"
+
+#: custom-post-types/press-release.php:35
+msgid "Boilerplate"
+msgstr "決まり文句"
+
+#: custom-post-types/press-release.php:45
+msgid "This press release boilerplate is shown at the bottom of all press releases.  Updating the boilerplate will update all past and future press releases."
+msgstr "このプレスリリースの定型は、すべてのプレスリリースの下部に表示されます。ボイラーを更新すると、すべての過去と未来のプレスリリースを更新します。"
+
+#: custom-post-types/press-release.php:52
+msgid "Save"
+msgstr "セーブ"
+
+#: custom-post-types/press-release.php:60
+msgid "boilerplate saved"
+msgstr "定型は、保存された"
