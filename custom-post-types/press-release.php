@@ -17,8 +17,8 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 		$this->plural = _n("Press Release", "Press Releases", 2, 'press-news-and-events');
 		
 		$this->labels = array(
-			'name' => _n("Press Release", "Press Releases", 1, 'press-news-and-events'),
-			'singular_name' => _n("Press Release", "Press Releases", 2, 'press-news-and-events'),
+			'name' => _n("Press Release", "Press Releases", 2, 'press-news-and-events'),
+			'singular_name' => _n("Press Release", "Press Releases", 1, 'press-news-and-events'),
 			'add_new' => __("Add New Press Release", 'press-news-and-events'),
 			'add_new_item' => __("Add New Press Release", 'press-news-and-events'),
 			'edit_item' => __("Edit Press Release", 'press-news-and-events'),
