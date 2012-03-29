@@ -20,6 +20,7 @@ class Press_News_Events {
 
 		add_theme_support('post-thumbnails');
 		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
+		add_action('admin_notices', array(__CLASS__, 'admin_notices'));
 	}
 	
 	function locale() {
@@ -52,6 +53,25 @@ class Press_News_Events {
 	}
 	
 	// Static Functions ----------------------------------------------------------
+	
+	static function admin_notices() {
+		$notices = get_option('pne_admin_notices', array());
+		
+		if (count($notices)) {
+			foreach ($notices as $notice) { ?>
+				<div class="updated">
+					<p><?php echo $notice; ?></p>
+				</div>
+			<?php }
+			delete_option('pne_admin_notices');
+		}
+	}
+
+	static function add_admin_notice($notice) {
+		$notices = get_option('pne_admin_notices', array());
+		$notices[] = $notice;
+		update_option('pne_admin_notices', $notices);
+	}
 
 	static function pretty_date_range($starts = false, $ends = false, $all_day = true) {
 		if (!$starts) $starts = current_time('timestamp');
