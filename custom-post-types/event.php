@@ -5,6 +5,19 @@ class PNE_Event extends PNE_Custom_Post_Type {
 	var $slug = 'event';
 	
 	function __construct() {
+		parent::__construct();
+
+		$this->new_rules();
+		add_filter('rewrite_rules_array', array($this, 'insert_rewrite_rules'));
+		add_filter('query_vars', array($this, 'insert_query_vars'));
+		add_action('wp_loaded', array($this, 'flush_rules'));
+		add_filter('posts_join', array($this, 'posts_join'));
+		add_filter('posts_where', array($this, 'posts_where'));
+		add_filter('posts_orderby', array($this, 'posts_orderby'));
+		add_filter('post_limits', array($this, 'post_limits'));
+	}
+	
+	function register() {
 		$this->archive_slug = _x("events", 'url segment', 'press-news-and-events');
 		$this->singular = _n("Event", "Events", 1, 'press-news-and-events');
 		$this->plural = _n("Event", "Events", 2, 'press-news-and-events');
@@ -22,16 +35,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 			'not_found_in_trash' => __("No Events found in Trash", 'press-news-and-events'),
 		);
 
-		parent::__construct();
-
-		$this->new_rules();
-		add_filter('rewrite_rules_array', array($this, 'insert_rewrite_rules'));
-		add_filter('query_vars', array($this, 'insert_query_vars'));
-		add_action('wp_loaded', array($this, 'flush_rules'));
-		add_filter('posts_join', array($this, 'posts_join'));
-		add_filter('posts_where', array($this, 'posts_where'));
-		add_filter('posts_orderby', array($this, 'posts_orderby'));
-		add_filter('post_limits', array($this, 'post_limits'));
+		parent::register();
 	}
 
 	// Admin ------------------------------------------------------------------

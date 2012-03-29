@@ -5,7 +5,7 @@ class PNE_News extends PNE_Custom_Post_Type {
 	var $slug = 'news';
 	var $supports = array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions');
 
-	function __construct() {
+	function regiser() {
 		$this->archive_slug = _x("news", 'url segment', 'press-news-and-events');
 		$this->singular = _n("News Story", "News Stories", 1, 'press-news-and-events');
 		$this->plural = _n("News Story", "News Stories", 2, 'press-news-and-events');
@@ -23,7 +23,7 @@ class PNE_News extends PNE_Custom_Post_Type {
 			'not_found_in_trash' => __("No News Stories found in Trash", 'press-news-and-events'),
 		);
 
-		parent::__construct();
+		parent::regiser();
 	}
 	
 	function meta_boxes() {

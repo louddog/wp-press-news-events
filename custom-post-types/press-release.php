@@ -5,6 +5,13 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	var $slug = 'press-release';
 	
 	function __construct() {
+		parent::__construct();
+		add_action('admin_menu', array($this, 'boilder_plate_menu'));
+		add_action('admin_init', array(&$this, 'save_boiler_plate'));
+		add_filter('the_content', array($this, 'inject_boilerplate'));
+	}
+	
+	function register() {
 		$this->archive_slug = _x("press-releases", 'url segment', 'press-news-and-events');
 		$this->singular = _n("Press Release", "Press Releases", 1, 'press-news-and-events');
 		$this->plural = _n("Press Release", "Press Releases", 2, 'press-news-and-events');
@@ -21,11 +28,8 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 			'not_found' => __("No Press Releases found", 'press-news-and-events'),
 			'not_found_in_trash' => __("No Press Releases found in Trash", 'press-news-and-events'),
 		);
-
-		parent::__construct();
-		add_action('admin_menu', array($this, 'boilder_plate_menu'));
-		add_action('admin_init', array(&$this, 'save_boiler_plate'));
-		add_filter('the_content', array($this, 'inject_boilerplate'));
+		
+		parent::register();
 	}
 	
 	function boilder_plate_menu() {

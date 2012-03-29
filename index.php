@@ -10,6 +10,8 @@ Author URI: http://www.louddog.com
 new Press_News_Events;
 class Press_News_Events {
 	function __construct() {
+		add_action('init', array($this, 'locale'));
+
 		$dir = dirname(__FILE__);
 		require "$dir/custom-post-type.php";
 		foreach (glob("$dir/custom-post-types/*.php") as $file) {
@@ -17,9 +19,7 @@ class Press_News_Events {
 		}
 
 		add_theme_support('post-thumbnails');
-		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
-		
-		add_action('init', array($this, 'locale'));
+		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));		
 	}
 	
 	function scripts_styles() {
