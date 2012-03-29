@@ -19,7 +19,11 @@ class Press_News_Events {
 		}
 
 		add_theme_support('post-thumbnails');
-		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));		
+		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
+	}
+	
+	function locale() {
+		load_plugin_textdomain('press-news-and-events', false, dirname(plugin_basename(__FILE__)).'/languages/');
 	}
 	
 	function scripts_styles() {
@@ -45,10 +49,6 @@ class Press_News_Events {
 			'1.0', // version
 			true // in footer
 		);
-	}
-	
-	function locale() {
-		load_plugin_textdomain('press-news-and-events', false, dirname(plugin_basename(__FILE__)).'/languages/');
 	}
 	
 	// Static Functions ----------------------------------------------------------

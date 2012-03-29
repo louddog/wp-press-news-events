@@ -8,7 +8,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	function __construct() {
 		parent::__construct();
 		add_action('admin_menu', array($this, 'boilder_plate_menu'));
-		add_action('admin_init', array(&$this, 'save_boiler_plate'));
+		add_action('admin_init', array($this, 'save_boiler_plate'));
 		add_filter('the_content', array($this, 'inject_boilerplate'));
 	}
 	
@@ -37,7 +37,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 			'edit.php?post_type='.$this->slug,
 			__("Press Release Boilerplate", 'press-news-and-events'),
 			__("Boilerplate", 'press-news-and-events'),
-			'edit_post',
+			'edit_posts',
 			'pne_press_release_boiler_plate',
 			array($this, 'boiler_plate')
 		);
