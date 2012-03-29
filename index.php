@@ -55,35 +55,34 @@ class Press_News_Events {
 
 	static function pretty_date_range($starts = false, $ends = false, $all_day = true) {
 		if (!$starts) $starts = current_time('timestamp');
-		if (!$ends) return $all_day
-			? date('F j, Y', $starts)
-			: date('F j g:ia, Y', $starts);
+		
+		$pne = 'press-news-and-events';
 
-		$sep = ' - ';
-		$output = '';
-
-		if (date('F j, Y', $starts) == date('F j, Y', $ends)) { // same day
-			$output = date('F j, Y', $starts);
-			if (!$all_day) {
-				if (date('H i', $starts) == date('H i', $ends)) { // same time
-					$output .= date(', g:ia', $starts);
-				} else {
-					$output .= date(', g:ia', $starts).$sep.date('g:ia', $ends);
-				}
-			}
+		$same_day = !$ends || date_i18n(__('F j, Y', $pne), $starts) == date_i18n(__('F j, Y', $pne), $ends);
+		$same_time = $same_day && date_i18n(__('H i', $pne), $starts) == date_i18n(__('H i', $pne), $ends);
+		$same_month = date_i18n(__('F Y', $pne), $starts) == date_i18n(__('F Y', $pne), $ends);
+		$same_year = date_i18n(__('Y', $pne), $starts) ==  date_i18n(__('Y', $pne), $ends);
+		
+		if ($same_time) {
+			return $all_day
+				? date_i18n(__('F j, Y', $pne), $starts)
+				: date_i18n(__('F j g:ia, Y', $pne), $starts);
+		} else if ($same_day) {
+			return $all_day
+				? date_i18n(__('F j, Y', $pne), $starts)
+				: sprintf('%s, %s - %s', date_i18n(__('F j, Y', $pne), $starts), date_i18n(__('g:ia', $pne), $starts), date_i18n(__('g:ia', $pne), $ends));
+		} else if ($same_month) {
+			return $all_day
+				? sprintf('%s - %s, %s', date_i18n(__('F j', $pne), $starts), date_i18n(__('j', $pne), $ends), date_i18n(__('Y', $pne), $starts))
+				: sprintf('%s - %s, %s', date_i18n(__('F j g:ia', $pne), $starts), date_i18n(__('j g:ia', $pne), $ends), date_i18n(__('Y', $pne), $starts));
+		} else if ($same_year) {
+			return $all_day
+				? sprintf('%s - %s, %s', date_i18n(__('F j', $pne), $starts), date_i18n(__('F j', $pne), $ends), date_i18n(__('Y', $pne), $starts))
+				: sprintf('%s - %s, %s', date_i18n(__('F j g:ia', $pne), $starts), date_i18n(__('F j g:ia', $pne), $ends), date_i18n(__('Y', $pne), $starts));
 		} else {
-			$starts_time = $all_day ? '' : date(', g:ia', $starts);
-			$ends_time = $all_day ? '' : date(', g:ia', $ends);
-
-			if (date('F Y', $starts) == date('F Y', $ends) && $all_day) { // same month, all_day
-				$output = date('F j', $starts).$starts_time.$sep.date('j', $ends).$ends_time.date(', Y', $ends);
-			} else if (date('Y', $starts) == date('Y', $ends)) { // same year/all day, or same month/timed, or same year/timed
-				$output = date('F j', $starts).$starts_time.$sep.date('F j', $ends).$ends_time.date(', Y', $ends);
-			} else { // otherwise
-				$output = date('F j', $starts).$starts_time.date(', Y', $starts).$sep.date('F j', $ends).$ends_time.date(', Y', $ends);
-			}
+			return $all_day
+				? sprintf('%s - %s', date_i18n(__('F j, Y', $pne), $starts), date_i18n(__('F j, Y', $pne), $ends))
+				: sprintf('%s - %s', date_i18n(__('F j g:ia, Y', $pne), $starts), date_i18n(__('F j g:ia, Y', $pne), $ends));
 		}
-
-		return $output;
 	}
 }
