@@ -3,10 +3,10 @@
 new PNE_News;
 class PNE_News extends PNE_Custom_Post_Type {
 	var $slug = 'news';
+	var $archive_slug = 'news';
 	var $supports = array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions');
 
 	function register() {
-		$this->archive_slug = _x("news", 'url segment', 'press-news-and-events');
 		$this->singular = _n("News Story", "News Stories", 1, 'press-news-and-events');
 		$this->plural = _n("News Story", "News Stories", 2, 'press-news-and-events');
 

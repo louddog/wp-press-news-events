@@ -3,6 +3,7 @@
 new PNE_Event;
 class PNE_Event extends PNE_Custom_Post_Type {
 	var $slug = 'event';
+	var $archive_slug = 'events';
 	
 	function __construct() {
 		parent::__construct();
@@ -18,7 +19,6 @@ class PNE_Event extends PNE_Custom_Post_Type {
 	}
 	
 	function register() {
-		$this->archive_slug = _x("events", 'url segment', 'press-news-and-events');
 		$this->singular = _n("Event", "Events", 1, 'press-news-and-events');
 		$this->plural = _n("Event", "Events", 2, 'press-news-and-events');
 		

@@ -3,6 +3,7 @@
 new PNE_Press_Release;
 class PNE_Press_Release extends PNE_Custom_Post_Type {
 	var $slug = 'press-release';
+	var $archive_slug = 'press-releases';
 	
 	function __construct() {
 		parent::__construct();
@@ -12,7 +13,6 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	}
 	
 	function register() {
-		$this->archive_slug = _x("press-releases", 'url segment', 'press-news-and-events');
 		$this->singular = _n("Press Release", "Press Releases", 1, 'press-news-and-events');
 		$this->plural = _n("Press Release", "Press Releases", 2, 'press-news-and-events');
 		
