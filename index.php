@@ -16,7 +16,6 @@ class Press_News_Events {
 		$this->include_files(array(
 			'custom-post-type.php',
 			'custom-post-types',
-			'shortcodes',
 		));
 
 		add_theme_support('post-thumbnails');
@@ -180,6 +179,10 @@ class Press_News_Events {
 		update_option('pne_admin_notices', $notices);
 	}
 
+	static function date_i18n($date) {
+		return date_i18n(get_option('date_format', $date));
+	}
+	
 	static function pretty_date_range($starts = false, $ends = false, $all_day = true) {
 		if (!$starts) $starts = current_time('timestamp');
 		

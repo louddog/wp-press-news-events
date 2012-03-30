@@ -258,4 +258,32 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		}
 		return $limit;
 	}
+	
+	// Shortcode --------------------------------------------------------------
+	
+	function meta_shortcode_pieces($atts) {
+		$pieces = parent::meta_shortcode_pieces($atts);
+		
+		extract(shortcode_atts(array(
+			'show' => "location date",
+			'location_string' => _x("at <span class='location'>%s</span>", "(an event being held) at [location name]", 'press-news-events'),
+			'date_string' => '%s',
+			'date_formatter' => array('Press_News_Events', 'pretty_date_range'),
+		), $atts));
+
+		$show = explode(' ', $show);
+
+		$meta = get_post_custom(get_the_ID());
+		extract(array(
+			'location' => $meta['_location'][0],
+			'starts' => $meta['_starts'][0],
+			'ends' => $meta['_ends'][0],
+			'all_day' => $meta['_all_day'][0],
+		));
+
+		if (in_array('location', $show) && !empty($location)) $pieces[] = sprintf($location_string, $location);
+		if (in_array('date', $show) && $starts) $pieces[] = sprintf($date_string, call_user_func($date_formatter, $starts, $ends, $all_day));
+
+		return $pieces;
+	}
 }

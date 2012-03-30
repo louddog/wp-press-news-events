@@ -22,6 +22,7 @@ abstract class PNE_Custom_Post_Type {
 		add_action('manage_edit-'.$this->slug.'_columns', array($this, 'columns'));
 		add_action('manage_posts_custom_column', array($this, 'column'));
 		add_action('manage_pages_custom_column', array($this, 'column'));
+		add_shortcode($this->slug.'-meta', array($this, 'meta_shortcode'));
 	}
 	
 	function register() {
@@ -58,4 +59,22 @@ abstract class PNE_Custom_Post_Type {
 	
 	function columns($columns) { return $columns; }
 	function column($column) { /* do nothing */ }
+	
+	// Shortcode --------------------------------------------------------------
+	
+	function meta_shortcode($atts) {
+		extract(shortcode_atts(array(
+			'class' => $this->slug.'-meta',
+			'separator' => '<br />',
+			'tag' => 'p',
+		), $atts));
+		
+		$pieces = $this->meta_shortcode_pieces($atts);
+		return empty($pieces) ? '' : "<$tag class='$class'>".implode($separator, $pieces)."</$tag>";
+	}
+	
+	function meta_shortcode_pieces($atts) {
+		return array(); // return nothing, subclasses will return something, if they want
+	}
+	
 }

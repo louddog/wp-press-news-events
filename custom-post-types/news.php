@@ -117,4 +117,28 @@ class PNE_News extends PNE_Custom_Post_Type {
 				break;
 		}
 	}
+	
+	// Shortcode --------------------------------------------------------------
+	
+	function meta_shortcode_pieces($atts) {
+		$pieces = parent::meta_shortcode_pieces($atts);
+
+		extract(shortcode_atts(array(
+			'show' => "link date",
+			'date_formatter' => array('Press_News_Events', 'date_i18n'),
+		), $atts));
+		
+		$show = explode(' ', $show);
+		
+		$meta = get_post_custom(get_the_ID());
+		extract(array(
+			'link' => $meta['_link'][0],
+			'date' => $meta['_date'][0],
+		));
+		
+		if ($link && in_array('link', $show)) $pieces[] = sprintf('<a href="%1$s">%1$s</a>', $link);
+		if ($date && in_array('date', $show)) $pieces[] = call_user_func($date_formatter, $date);
+		
+		return $pieces;
+	}
 }
