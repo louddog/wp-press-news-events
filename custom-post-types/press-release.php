@@ -85,4 +85,21 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 			));
 		}
 	}
+	
+	function meta_shortcode_pieces($atts) {
+		$pieces = parent::meta_shortcode_pieces($atts);
+		
+		extract(shortcode_atts(array(
+			'show' => "date",
+			'date_string' => '%s',
+			'date_formatter' => array('Press_News_Events', 'date_i18n'),
+		), $atts));
+
+		$show = explode(' ', $show);
+
+		$post = get_post(get_the_ID());
+		$pieces[] = sprintf($date_string, call_user_func($date_formatter, $post->post_date));
+
+		return $pieces;
+	}
 }
