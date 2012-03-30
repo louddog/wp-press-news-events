@@ -10,6 +10,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 		add_action('admin_menu', array($this, 'boilder_plate_menu'));
 		add_action('admin_init', array($this, 'save_boiler_plate'));
 		add_filter('the_content', array($this, 'inject_boilerplate'));
+		add_action('wp_before_admin_bar_render', array($this, 'admin_bar'));
 	}
 	
 	function register() {
@@ -73,5 +74,15 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 			$content .= get_option('pne_press_release_boilderplate');
 		}
 		return $content;
+	}
+	
+	function admin_bar() {
+		if (!is_admin() && get_post_type() == 'press-release') {
+			global $wp_admin_bar;
+			$wp_admin_bar->add_menu(array(
+				'title' => __("Edit Boilerplate", 'press-news-events'),
+				'href' => admin_url('edit.php?post_type=press-release&page=pne_press_release_boiler_plate'),
+			));
+		}
 	}
 }
