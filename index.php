@@ -82,7 +82,7 @@ class Press_News_Events {
 				<?php wp_nonce_field(plugin_basename(__FILE__), 'pne_nonce_options'); ?>
 				
 				<h3><?=__("Custom Post Type Archives", 'press-news-events')?></h3>
-				<p><?=__("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.", 'press-news-events')?></p>
+				<p><?=__("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.  If for no other reason, it's good to change the top heading on the page.", 'press-news-events')?></p>
 				
 				<p>
 					<?=__("Create an archive page for:", 'press-news-events')?><br />
