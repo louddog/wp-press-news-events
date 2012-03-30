@@ -23,6 +23,7 @@ abstract class PNE_Custom_Post_Type {
 		add_action('manage_posts_custom_column', array($this, 'column'));
 		add_action('manage_pages_custom_column', array($this, 'column'));
 		add_shortcode($this->slug.'-meta', array($this, 'meta_shortcode'));
+		if (Press_News_Events::inject_meta($this->archive_slug)) add_filter('the_content', array($this, 'inject_meta'));
 	}
 	
 	function register() {
@@ -77,4 +78,11 @@ abstract class PNE_Custom_Post_Type {
 		return array(); // return nothing, subclasses will return something, if they want
 	}
 	
+	function inject_meta($content) {
+		global $post;
+		if ($post->post_type == $this->slug) {
+			$content = do_shortcode("[$this->slug-meta]").$content;
+		}
+		return $content;
+	}
 }

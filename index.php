@@ -131,6 +131,42 @@ class Press_News_Events {
 					</label><br />
 				</p>
 				
+				<h3><?=__("Add Information", 'press-news-events')?></h3>
+				<p><?=__("The plugin can add post type specific information to pages and pages.  For instance, it can put the date and location in the content of each event.", 'press-news-events')?></p>
+				
+				<p>
+					<?=__("Add info for:", 'press-news-events')?><br />
+					<input
+						type="checkbox"
+						name="pne_options[inject_meta][events]"
+						id="pne_options_inject_meta_events"
+						<?php if (self::inject_meta('events')) echo 'checked'; ?>
+					/>
+					<label for="pne_options_inject_meta_events">
+						<?=_n("Event", "Events", 2, 'press-news-events')?>
+					</label><br />
+
+					<input
+						type="checkbox"
+						name="pne_options[inject_meta][news]"
+						id="pne_options_inject_meta_news"
+						<?php if (self::inject_meta('news')) echo 'checked'; ?>
+					/>
+					<label for="pne_options_inject_meta_news">
+						<?=_n("News Story", "News Stories", 2, 'press-news-events')?>
+					</label><br />
+
+					<input
+						type="checkbox"
+						name="pne_options[inject_meta][press-releases]"
+						id="pne_options_inject_meta_press_releases"
+						<?php if (self::inject_meta('press-releases')) echo 'checked'; ?>
+					/>
+					<label for="pne_options_inject_meta_press_releases">
+						<?=_n("Press Release", "Press Releases", 2, 'press-news-events')?>
+					</label><br />
+				</p>
+				
 				<input type="submit" class="button-primary" value="<?=esc_attr(__("Save"))?>" />
 			</form>
 		</div> <!-- .wrap -->
@@ -139,6 +175,7 @@ class Press_News_Events {
 	function save_options() {
 		if (isset($_POST['pne_nonce_options']) && check_admin_referer(plugin_basename(__FILE__), 'pne_nonce_options')) {
 			update_option('pne_auto_archive', isset($_POST['pne_options']['auto_archive']) ? array_keys($_POST['pne_options']['auto_archive']) : array());
+			update_option('pne_inject_meta', isset($_POST['pne_options']['inject_meta']) ? array_keys($_POST['pne_options']['inject_meta']) : array());
 			
 			flush_rewrite_rules();
 
@@ -150,6 +187,10 @@ class Press_News_Events {
 	
 	function auto_archive($slug) {
 		return in_array($slug, get_option('pne_auto_archive', array('events', 'news', 'press-releases')));
+	}
+	
+	function inject_meta($slug) {
+		return in_array($slug, get_option('pne_inject_meta', array('events', 'news', 'press-releases')));
 	}
 	
 	function settings_link($links) { 
