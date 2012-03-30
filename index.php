@@ -7,6 +7,8 @@ Version: 1.0
 Author URI: http://www.louddog.com
 */
 
+define('PRESS_NEWS_EVENTS_VERSION', '1.0');
+
 new Press_News_Events;
 class Press_News_Events {
 	function __construct() {
@@ -55,14 +57,14 @@ class Press_News_Events {
 			'pne_admin', // handle 
 			plugins_url('css/admin.css', __FILE__), // path
 			array(), // dependencies
-			'1.0' // version
+			PRESS_NEWS_EVENTS_VERSION // version
 		);
 
 	    wp_register_script(
 			'pne_datepicker', // handle 
 			plugins_url('js/datepicker.js', __FILE__), // path
 			array('jquery'), // dependencies
-			'1.0', // version
+			PRESS_NEWS_EVENTS_VERSION, // version
 			true // in footer
 		);
 
@@ -70,7 +72,7 @@ class Press_News_Events {
 			'pne_admin', // handle 
 			$path = plugins_url('js/admin.js', __FILE__), // path
 			array('jquery', 'pne_datepicker'), // dependencies
-			'1.0', // version
+			PRESS_NEWS_EVENTS_VERSION, // version
 			true // in footer
 		);
 	}
