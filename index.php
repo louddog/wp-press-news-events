@@ -23,6 +23,7 @@ class Press_News_Events {
 		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
 		add_action('admin_menu', array($this, 'add_options_page'));	
 		add_action('admin_init', array($this, 'save_options'));
+		add_filter("plugin_action_links_".plugin_basename(__FILE__), array($this, 'settings_link'));
 		add_action('admin_notices', array(__CLASS__, 'admin_notices'));
 	}
 	
@@ -138,6 +139,12 @@ class Press_News_Events {
 	
 	function auto_archive($slug) {
 		return in_array($slug, get_option('pne_auto_archive', array('events', 'news', 'press-releases')));
+	}
+	
+	function settings_link($links) { 
+		$settings_link = '<a href="options-general.php?page=press-news-and-events-options">Settings</a>';
+		array_unshift($links, $settings_link); 
+		return $links; 
 	}
 	
 	// Static Functions ----------------------------------------------------------
