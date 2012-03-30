@@ -11,6 +11,7 @@ new Press_News_Events;
 class Press_News_Events {
 	function __construct() {
 		add_action('init', array($this, 'locale'));
+		register_activation_hook(__FILE__, array($this, 'activate'));
 
 		$dir = dirname(__FILE__);
 		require "$dir/custom-post-type.php";
@@ -27,6 +28,14 @@ class Press_News_Events {
 	
 	function locale() {
 		load_plugin_textdomain('press-news-and-events', false, dirname(plugin_basename(__FILE__)).'/languages/');
+	}
+	
+	function activate() {
+		add_action('init', array($this, '_activate'));
+	}
+	
+	function _activate() {
+		flush_rewrite_rules();
 	}
 	
 	function scripts_styles() {
