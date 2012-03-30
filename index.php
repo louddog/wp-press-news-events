@@ -12,12 +12,12 @@ class Press_News_Events {
 	function __construct() {
 		add_action('init', array($this, 'locale'));
 		register_activation_hook(__FILE__, array($this, 'activate'));
-
-		$dir = dirname(__FILE__);
-		require "$dir/custom-post-type.php";
-		foreach (glob("$dir/custom-post-types/*.php") as $file) {
-			require($file);
-		}
+		
+		$this->include_files(array(
+			'custom-post-type.php',
+			'custom-post-types',
+			'shortcodes',
+		));
 
 		add_theme_support('post-thumbnails');
 		add_action('admin_enqueue_scripts', array($this, 'scripts_styles'));
@@ -25,6 +25,18 @@ class Press_News_Events {
 		add_action('admin_init', array($this, 'save_options'));
 		add_filter("plugin_action_links_".plugin_basename(__FILE__), array($this, 'settings_link'));
 		add_action('admin_notices', array(__CLASS__, 'admin_notices'));
+	}
+	
+	function include_files($files) {
+		$dir = dirname(__FILE__);
+		foreach ($files as $file) {
+			$file = "$dir/$file";
+			if (is_dir($file)) {
+				foreach (glob("$file/*.php") as $file) {
+					include $file;
+				}
+			} else include $file;
+		}
 	}
 	
 	function locale() {
