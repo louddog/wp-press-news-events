@@ -105,4 +105,9 @@ class Press_News_Events {
 				: sprintf('%s - %s', date_i18n(__('F j g:ia, Y', $pne), $starts), date_i18n(__('F j g:ia, Y', $pne), $ends));
 		}
 	}
+	
+	static function debug($var, $die = false) {
+		echo "<pre style='padding:5px;background-color:#EEE;white-space:pre-wrap;'>".htmlentities(print_r($var,1))."</pre>";
+		if ($die) die;
+	}
 }
