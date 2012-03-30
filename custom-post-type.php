@@ -34,7 +34,7 @@ abstract class PNE_Custom_Post_Type {
 			'capability_type' => 'post',
 			'hierarchical' => $this->hierarchical,
 			'supports' => $this->supports,
-			'has_archive' => $this->archive_slug,
+			'has_archive' => Press_News_Events::auto_archive($this->archive_slug) ? $this->archive_slug : false,
 			'rewrite' => array(
 				'slug' => $this->archive_slug,
 				'with_front' => false,
