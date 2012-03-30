@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Press, News and Events
+Plugin Name: Press, News, Events
 Description: Create custom post types for press releases, references to external news stories, and events.
 Author: Loud Dog
 Version: 1.0
@@ -28,7 +28,7 @@ class Press_News_Events {
 	}
 	
 	function locale() {
-		load_plugin_textdomain('press-news-and-events', false, dirname(plugin_basename(__FILE__)).'/languages/');
+		load_plugin_textdomain('press-news-events', false, dirname(plugin_basename(__FILE__)).'/languages/');
 	}
 	
 	function activate() {
@@ -66,8 +66,8 @@ class Press_News_Events {
 	
 	function add_options_page() {
 		add_options_page(
-			_x("Press, News and Events Options", "admin options page title", 'press-news-and-events'),
-			_x("Press, News and Events", "admin options page menu title", 'press-news-and-events'),
+			_x("Press, News and Events Options", "admin options page title", 'press-news-events'),
+			_x("Press, News, Events", "admin options page menu title", 'press-news-events'),
 			'manage_options',
 			'press-news-and-events-options',
 			array($this, 'options_page')
@@ -76,16 +76,16 @@ class Press_News_Events {
 	
 	function options_page() { ?>
 		<div class="wrap pne_options_page">
-			<h2><?=_x("Press, News and Events Options", "admin options page title", 'press-news-and-events')?></h2>
+			<h2><?=_x("Press, News and Events Options", "admin options page title", 'press-news-events')?></h2>
 			
 			<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 				<?php wp_nonce_field(plugin_basename(__FILE__), 'pne_nonce_options'); ?>
 				
-				<h3><?=__("Custom Post Type Archives", 'press-news-and-events')?></h3>
-				<p><?=__("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.", 'press-news-and-events')?></p>
+				<h3><?=__("Custom Post Type Archives", 'press-news-events')?></h3>
+				<p><?=__("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.", 'press-news-events')?></p>
 				
 				<p>
-					<?=__("Create an archive page for:", 'press-news-and-events')?><br />
+					<?=__("Create an archive page for:", 'press-news-events')?><br />
 					<input
 						type="checkbox"
 						name="pne_options[auto_archive][events]"
@@ -93,7 +93,7 @@ class Press_News_Events {
 						<?php if (self::auto_archive('events')) echo 'checked'; ?>
 					/>
 					<label for="pne_options_auto_archive_events">
-						<?=_n("Event", "Events", 2, 'press-news-and-events')?>
+						<?=_n("Event", "Events", 2, 'press-news-events')?>
 						<a href="<?=get_post_type_archive_link('event')?>" target="_blank"><?=get_post_type_archive_link('event')?></a>
 					</label><br />
 
@@ -104,7 +104,7 @@ class Press_News_Events {
 						<?php if (self::auto_archive('news')) echo 'checked'; ?>
 					/>
 					<label for="pne_options_auto_archive_news">
-						<?=_n("News Story", "News Stories", 2, 'press-news-and-events')?>
+						<?=_n("News Story", "News Stories", 2, 'press-news-events')?>
 						<a href="<?=get_post_type_archive_link('news')?>" target="_blank"><?=get_post_type_archive_link('news')?></a>
 					</label><br />
 
@@ -115,7 +115,7 @@ class Press_News_Events {
 						<?php if (self::auto_archive('press-releases')) echo 'checked'; ?>
 					/>
 					<label for="pne_options_auto_archive_press_releases">
-						<?=_n("Press Release", "Press Releases", 2, 'press-news-and-events')?>
+						<?=_n("Press Release", "Press Releases", 2, 'press-news-events')?>
 						<a href="<?=get_post_type_archive_link('press-release')?>" target="_blank"><?=get_post_type_archive_link('press-release')?></a>
 					</label><br />
 				</p>
@@ -131,7 +131,7 @@ class Press_News_Events {
 			
 			flush_rewrite_rules();
 
-			self::add_admin_notice(__("options saved", 'press-news-and-events'));
+			self::add_admin_notice(__("options saved", 'press-news-events'));
 			header("Location: ".$_SERVER['REQUEST_URI']);
 			die;
 		}
@@ -171,7 +171,7 @@ class Press_News_Events {
 	static function pretty_date_range($starts = false, $ends = false, $all_day = true) {
 		if (!$starts) $starts = current_time('timestamp');
 		
-		$pne = 'press-news-and-events';
+		$pne = 'press-news-events';
 
 		$same_day = !$ends || date_i18n(__('F j, Y', $pne), $starts) == date_i18n(__('F j, Y', $pne), $ends);
 		$same_time = $same_day && date_i18n(__('H i', $pne), $starts) == date_i18n(__('H i', $pne), $ends);

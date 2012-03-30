@@ -1,0 +1,273 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Press, News and Events \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-and-events\n"
+"POT-Creation-Date: 2012-03-29 18:07:18+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-03-28 16:02-0800\n"
+"Last-Translator: Loud Dog <info@louddog.com>\n"
+"Language-Team: Loud Dog <info@louddog.com> \n"
+
+#: custom-post-types/event.php:23 custom-post-types/event.php:24
+#: custom-post-types/event.php:27 custom-post-types/event.php:28 index.php:96
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] "イベント"
+msgstr[1] "イベント"
+
+#: custom-post-types/event.php:29 custom-post-types/event.php:30
+msgid "Add New Event"
+msgstr "新しいイベントを追加する"
+
+#: custom-post-types/event.php:31
+msgid "Edit Event"
+msgstr "イベントを編集します。"
+
+#: custom-post-types/event.php:32
+msgid "New Event"
+msgstr "イベントを編集します。"
+
+#: custom-post-types/event.php:33
+msgid "View Event"
+msgstr "イベントを見る"
+
+#: custom-post-types/event.php:34
+msgid "Search Events"
+msgstr "イベント検索"
+
+#: custom-post-types/event.php:35
+msgid "No Events found"
+msgstr "何のイベントが見つかりませんでした"
+
+#: custom-post-types/event.php:36
+msgid "No Events found in Trash"
+msgstr "何もイベントがゴミ箱に見つかりません"
+
+#: custom-post-types/event.php:49 custom-post-types/news.php:33
+msgid "Options"
+msgstr "オプション"
+
+#: custom-post-types/event.php:76
+msgid "Location:"
+msgstr "場所："
+
+#: custom-post-types/event.php:80
+msgid "Event Date:"
+msgstr "イベント日："
+
+#: custom-post-types/event.php:92
+msgid "Time:"
+msgstr "時間："
+
+#: custom-post-types/event.php:102
+msgid "All Day"
+msgstr "終日"
+
+#: custom-post-types/event.php:111
+msgid "6:30pm"
+msgstr "18:30"
+
+#: custom-post-types/event.php:113
+msgctxt "starting time *to* ending time"
+msgid "to"
+msgstr "へ"
+
+#: custom-post-types/event.php:119
+msgid "9:30pm"
+msgstr "21:30"
+
+#: custom-post-types/event.php:170 custom-post-types/news.php:99
+msgctxt "column header"
+msgid "Date"
+msgstr "日付"
+
+#: custom-post-types/news.php:9 custom-post-types/news.php:10
+#: custom-post-types/news.php:13 custom-post-types/news.php:14 index.php:107
+msgid "News Story"
+msgid_plural "News Stories"
+msgstr[0] "ニュース記事"
+msgstr[1] "ニュース"
+
+#: custom-post-types/news.php:15 custom-post-types/news.php:16
+msgid "Add New News Story"
+msgstr "新しいニュースを追加ストーリー"
+
+#: custom-post-types/news.php:17
+msgid "Edit News Story"
+msgstr "ニュース記事を編集"
+
+#: custom-post-types/news.php:18
+msgid "New News Story"
+msgstr "新しいニュース·ストーリー"
+
+#: custom-post-types/news.php:19
+msgid "View News Story"
+msgstr "ニュース記事を見る"
+
+#: custom-post-types/news.php:20
+msgid "Search News Stories"
+msgstr "検索ニュースストーリー"
+
+#: custom-post-types/news.php:21
+msgid "No News Stories found"
+msgstr "いいえニュース記事は見つかりませんでした"
+
+#: custom-post-types/news.php:22
+msgid "No News Stories found in Trash"
+msgstr "いいえニュース記事では、ゴミ箱に見つかりません"
+
+#: custom-post-types/news.php:54
+msgid "Link:"
+msgstr "リンク："
+
+#: custom-post-types/news.php:62
+msgid "link"
+msgstr "リンク"
+
+#: custom-post-types/news.php:67
+msgid "News Date:"
+msgstr "ニュース日付："
+
+#: custom-post-types/news.php:100
+msgctxt "column header"
+msgid "Link"
+msgstr "リンク"
+
+#: custom-post-types/press-release.php:15
+#: custom-post-types/press-release.php:16
+#: custom-post-types/press-release.php:19
+#: custom-post-types/press-release.php:20 index.php:118
+msgid "Press Release"
+msgid_plural "Press Releases"
+msgstr[0] "プレスリリース"
+msgstr[1] "プレスリリース"
+
+#: custom-post-types/press-release.php:21
+#: custom-post-types/press-release.php:22
+msgid "Add New Press Release"
+msgstr "新しいプレスリリースを追加します。"
+
+#: custom-post-types/press-release.php:23
+msgid "Edit Press Release"
+msgstr "プレスリリースを編集します。"
+
+#: custom-post-types/press-release.php:24
+msgid "New Press Release"
+msgstr "新しいプレスリリース"
+
+#: custom-post-types/press-release.php:25
+msgid "View Press Release"
+msgstr "プレスリリースを見る"
+
+#: custom-post-types/press-release.php:26
+msgid "Search Press Releases"
+msgstr "プレスリリースを検索"
+
+#: custom-post-types/press-release.php:27
+msgid "No Press Releases found"
+msgstr "いいえプレスリリースが見つかりませんでした"
+
+#: custom-post-types/press-release.php:28
+msgid "No Press Releases found in Trash"
+msgstr "いいえプレスリリースをゴミ箱に見つかりません"
+
+#: custom-post-types/press-release.php:37
+#: custom-post-types/press-release.php:47
+msgid "Press Release Boilerplate"
+msgstr "リリースボイラーを押してください"
+
+#: custom-post-types/press-release.php:38
+msgid "Boilerplate"
+msgstr "決まり文句"
+
+#: custom-post-types/press-release.php:48
+msgid ""
+"This press release boilerplate is shown at the bottom of all press "
+"releases.  Updating the boilerplate will update all past and future press "
+"releases."
+msgstr "このプレスリリースの定型は、すべてのプレスリリースの下部に表示されます。ボイラーを更新すると、すべての過去と未来のプレスリリースを更新します。"
+
+#: custom-post-types/press-release.php:55 index.php:123
+msgid "Save"
+msgstr "セーブ"
+
+#: custom-post-types/press-release.php:63
+msgid "boilerplate saved"
+msgstr "定型は、保存された"
+
+#: index.php:69 index.php:79
+msgctxt "admin options page title"
+msgid "Press, News and Events Options"
+msgstr "を押して、ニュースとイベントのオプション"
+
+#: index.php:70
+msgctxt "admin options page menu title"
+msgid "Press, News, Events"
+msgstr "プレス、ニュース、イベント"
+
+#: index.php:84
+msgid "Custom Post Type Archives"
+msgstr "カスタム投稿タイプのアーカイブ"
+
+#: index.php:85
+msgid ""
+"The plugin can create archive pages for each of the post types, similar to "
+"your blog index.  This is a handy way to display all you press, news and "
+"events.  But if you want to make your own page, using the same urls shown "
+"below, then these archives will conflict, and should be turned off.  If you "
+"do decide to keep them, you might be interested in creating <a href='http://"
+"codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special "
+"template files</a> for each archive."
+msgstr "プラグインは、あなたのブログのインデックスと同様に、ポストの種類ごとにアーカイブページを作成することができます。これは、押して、ニュースやイベントを表示する便利な方法です。しかし、あなたは以下のように同じURLを使用して、独自のページを作りたい場合は、これらのアーカイブは衝突され、オフにする必要があります。あなたがそれらを維持することを決定しない場合は、各アーカイブのための特別なテンプレートファイルを作成するに興味があるかもしれません。"
+
+#: index.php:88
+msgid "Create an archive page for:"
+msgstr "のアーカイブページを作成します。"
+
+#: index.php:134
+msgid "options saved"
+msgstr "オプションが保存された"
+
+#: index.php:176 index.php:183 index.php:187 index.php:188 index.php:199
+msgid "F j, Y"
+msgstr ""
+
+#: index.php:177
+msgid "H i"
+msgstr ""
+
+#: index.php:178
+msgid "F Y"
+msgstr ""
+
+#: index.php:179 index.php:191 index.php:192 index.php:195 index.php:196
+msgid "Y"
+msgstr ""
+
+#: index.php:184 index.php:200
+msgid "F j g:ia, Y"
+msgstr ""
+
+#: index.php:188
+msgid "g:ia"
+msgstr ""
+
+#: index.php:191 index.php:195
+msgid "F j"
+msgstr ""
+
+#: index.php:191
+msgid "j"
+msgstr ""
+
+#: index.php:192 index.php:196
+msgid "F j g:ia"
+msgstr ""
+
+#: index.php:192
+msgid "j g:ia"
+msgstr ""

@@ -13,20 +13,20 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	}
 	
 	function register() {
-		$this->singular = _n("Press Release", "Press Releases", 1, 'press-news-and-events');
-		$this->plural = _n("Press Release", "Press Releases", 2, 'press-news-and-events');
+		$this->singular = _n("Press Release", "Press Releases", 1, 'press-news-events');
+		$this->plural = _n("Press Release", "Press Releases", 2, 'press-news-events');
 		
 		$this->labels = array(
-			'name' => _n("Press Release", "Press Releases", 2, 'press-news-and-events'),
-			'singular_name' => _n("Press Release", "Press Releases", 1, 'press-news-and-events'),
-			'add_new' => __("Add New Press Release", 'press-news-and-events'),
-			'add_new_item' => __("Add New Press Release", 'press-news-and-events'),
-			'edit_item' => __("Edit Press Release", 'press-news-and-events'),
-			'new_item' => __("New Press Release", 'press-news-and-events'),
-			'view_item' => __("View Press Release", 'press-news-and-events'),
-			'search_items' => __("Search Press Releases", 'press-news-and-events'),
-			'not_found' => __("No Press Releases found", 'press-news-and-events'),
-			'not_found_in_trash' => __("No Press Releases found in Trash", 'press-news-and-events'),
+			'name' => _n("Press Release", "Press Releases", 2, 'press-news-events'),
+			'singular_name' => _n("Press Release", "Press Releases", 1, 'press-news-events'),
+			'add_new' => __("Add New Press Release", 'press-news-events'),
+			'add_new_item' => __("Add New Press Release", 'press-news-events'),
+			'edit_item' => __("Edit Press Release", 'press-news-events'),
+			'new_item' => __("New Press Release", 'press-news-events'),
+			'view_item' => __("View Press Release", 'press-news-events'),
+			'search_items' => __("Search Press Releases", 'press-news-events'),
+			'not_found' => __("No Press Releases found", 'press-news-events'),
+			'not_found_in_trash' => __("No Press Releases found in Trash", 'press-news-events'),
 		);
 		
 		parent::register();
@@ -35,8 +35,8 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	function boilder_plate_menu() {
 		add_submenu_page(
 			'edit.php?post_type='.$this->slug,
-			__("Press Release Boilerplate", 'press-news-and-events'),
-			__("Boilerplate", 'press-news-and-events'),
+			__("Press Release Boilerplate", 'press-news-events'),
+			__("Boilerplate", 'press-news-events'),
 			'edit_posts',
 			'pne_press_release_boiler_plate',
 			array($this, 'boiler_plate')
@@ -45,8 +45,8 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	
 	function boiler_plate() { ?>
 		<div class="wrap">
-			<h2><?=__("Press Release Boilerplate", 'press-news-and-events')?></h2>
-			<p><?=__("This press release boilerplate is shown at the bottom of all press releases.  Updating the boilerplate will update all past and future press releases.", 'press-news-and-events')?></p>
+			<h2><?=__("Press Release Boilerplate", 'press-news-events')?></h2>
+			<p><?=__("This press release boilerplate is shown at the bottom of all press releases.  Updating the boilerplate will update all past and future press releases.", 'press-news-events')?></p>
 			
 			<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 				<?php wp_nonce_field(plugin_basename(__FILE__), 'pne_nonce_press_release_boiler_plate'); ?>
@@ -61,7 +61,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	function save_boiler_plate() {
 		if (isset($_POST['pne_nonce_press_release_boiler_plate']) && check_admin_referer(plugin_basename(__FILE__), 'pne_nonce_press_release_boiler_plate')) {
 			update_option('pne_press_release_boilderplate', trim(stripslashes($_POST['pnepressreleaseboilderplate'])));
-			Press_News_Events::add_admin_notice(__("boilerplate saved", 'press-news-and-events'));
+			Press_News_Events::add_admin_notice(__("boilerplate saved", 'press-news-events'));
 			header("Location: ".$_SERVER['REQUEST_URI']);
 			die;
 		}

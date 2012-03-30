@@ -7,20 +7,20 @@ class PNE_News extends PNE_Custom_Post_Type {
 	var $supports = array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions');
 
 	function register() {
-		$this->singular = _n("News Story", "News Stories", 1, 'press-news-and-events');
-		$this->plural = _n("News Story", "News Stories", 2, 'press-news-and-events');
+		$this->singular = _n("News Story", "News Stories", 1, 'press-news-events');
+		$this->plural = _n("News Story", "News Stories", 2, 'press-news-events');
 
 		$this->labels = array(
-			'name' => _n("News Story", "News Stories", 2, 'press-news-and-events'),
-			'singular_name' => _n("News Story", "News Stories", 1, 'press-news-and-events'),
-			'add_new' => __("Add New News Story", 'press-news-and-events'),
-			'add_new_item' => __("Add New News Story", 'press-news-and-events'),
-			'edit_item' => __("Edit News Story", 'press-news-and-events'),
-			'new_item' => __("New News Story", 'press-news-and-events'),
-			'view_item' => __("View News Story", 'press-news-and-events'),
-			'search_items' => __("Search News Stories", 'press-news-and-events'),
-			'not_found' => __("No News Stories found", 'press-news-and-events'),
-			'not_found_in_trash' => __("No News Stories found in Trash", 'press-news-and-events'),
+			'name' => _n("News Story", "News Stories", 2, 'press-news-events'),
+			'singular_name' => _n("News Story", "News Stories", 1, 'press-news-events'),
+			'add_new' => __("Add New News Story", 'press-news-events'),
+			'add_new_item' => __("Add New News Story", 'press-news-events'),
+			'edit_item' => __("Edit News Story", 'press-news-events'),
+			'new_item' => __("New News Story", 'press-news-events'),
+			'view_item' => __("View News Story", 'press-news-events'),
+			'search_items' => __("Search News Stories", 'press-news-events'),
+			'not_found' => __("No News Stories found", 'press-news-events'),
+			'not_found_in_trash' => __("No News Stories found in Trash", 'press-news-events'),
 		);
 
 		parent::register();
@@ -31,7 +31,7 @@ class PNE_News extends PNE_Custom_Post_Type {
 		
 		add_meta_box(
 			$this->slug."-options",
-			sprintf(__("Options", 'press-news-and-events'), $this->singular),
+			sprintf(__("Options", 'press-news-events'), $this->singular),
 			array($this, 'options'),
 			$this->slug,
 			'side'
@@ -52,7 +52,7 @@ class PNE_News extends PNE_Custom_Post_Type {
 		
 		<table class="pne_news_options">
 			<tr>
-				<td><label><?=__("Link:", 'press-news-and-events')?></label></td>
+				<td><label><?=__("Link:", 'press-news-events')?></label></td>
 				<td>
 					<input
 						type="text"
@@ -60,12 +60,12 @@ class PNE_News extends PNE_Custom_Post_Type {
 						value="<?=esc_attr($link)?>"
 					/>
 					<?php if (!empty($link)) { ?>
-						<a href="<?=$link?>" target="_blank"><?=__("link", 'press-news-and-events')?></a>
+						<a href="<?=$link?>" target="_blank"><?=__("link", 'press-news-events')?></a>
 					<?php } ?>
 				</td>
 			</tr>
 			<tr>
-				<td><label><?=__("News Date:", 'press-news-and-events')?></label></td>
+				<td><label><?=__("News Date:", 'press-news-events')?></label></td>
 				<td>
 					<div class="date_picker"></div>
 					<input
@@ -97,8 +97,8 @@ class PNE_News extends PNE_Custom_Post_Type {
 	function columns($columns) {
 		unset($columns['comments']);
 		unset($columns['date']);
-		$columns['pne_news_date'] = _x("Date", 'column header', 'press-news-and-events');
-		$columns['pne_news_link'] = _x("Link", 'column header', 'press-news-and-events');
+		$columns['pne_news_date'] = _x("Date", 'column header', 'press-news-events');
+		$columns['pne_news_link'] = _x("Link", 'column header', 'press-news-events');
 		
 		return $columns;
 	}
