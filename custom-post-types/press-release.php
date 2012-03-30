@@ -77,7 +77,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	}
 	
 	function admin_bar() {
-		if (!is_admin() && get_post_type() == 'press-release') {
+		if (get_post_type() == 'press-release') {
 			global $wp_admin_bar;
 			$wp_admin_bar->add_menu(array(
 				'title' => __("Edit Boilerplate", 'press-news-events'),
