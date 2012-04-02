@@ -8,7 +8,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 	function __construct() {
 		parent::__construct();
 		
-		if (Press_News_Events::auto_archive($this->archive_slug)) {
+		if (PNE_Settings::auto_archive($this->archive_slug)) {
 			$this->new_rules();
 			add_filter('rewrite_rules_array', array($this, 'insert_rewrite_rules'));
 			add_filter('query_vars', array($this, 'insert_query_vars'));

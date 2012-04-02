@@ -23,7 +23,7 @@ abstract class PNE_Custom_Post_Type {
 		add_action('manage_posts_custom_column', array($this, 'column'));
 		add_action('manage_pages_custom_column', array($this, 'column'));
 		add_shortcode($this->slug.'-meta', array($this, 'meta_shortcode'));
-		if (Press_News_Events::inject_meta($this->archive_slug)) add_filter('the_content', array($this, 'inject_meta'));
+		if (PNE_Settings::inject_meta($this->archive_slug)) add_filter('the_content', array($this, 'inject_meta'));
 	}
 	
 	function register() {
@@ -36,7 +36,7 @@ abstract class PNE_Custom_Post_Type {
 			'capability_type' => 'post',
 			'hierarchical' => $this->hierarchical,
 			'supports' => $this->supports,
-			'has_archive' => Press_News_Events::auto_archive($this->archive_slug) ? $this->archive_slug : false,
+			'has_archive' => PNE_Settings::auto_archive($this->slug) ? $this->archive_slug : false,
 			'rewrite' => array(
 				'slug' => $this->archive_slug,
 				'with_front' => false,
