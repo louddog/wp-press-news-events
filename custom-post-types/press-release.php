@@ -61,7 +61,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	
 	function save_boiler_plate() {
 		if (isset($_POST['pne_nonce_press_release_boiler_plate']) && check_admin_referer(plugin_basename(__FILE__), 'pne_nonce_press_release_boiler_plate')) {
-			update_option('pne_press_release_boilderplate', trim(stripslashes($_POST['pnepressreleaseboilderplate'])));
+			update_option('pne_press_release_boilderplate', apply_filters('the_content', trim(stripslashes($_POST['pnepressreleaseboilderplate']))));
 			Press_News_Events::add_admin_notice(__("boilerplate saved", 'press-news-events'));
 			header("Location: ".$_SERVER['REQUEST_URI']);
 			die;
