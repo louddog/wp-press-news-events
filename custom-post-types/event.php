@@ -8,16 +8,17 @@ class PNE_Event extends PNE_Custom_Post_Type {
 	function __construct() {
 		parent::__construct();
 		
-		if (PNE_Settings::auto_archive($this->archive_slug)) {
+		if (PNE_Settings::auto_archive($this->slug)) {
 			$this->new_rules();
 			add_filter('rewrite_rules_array', array($this, 'insert_rewrite_rules'));
 			add_filter('query_vars', array($this, 'insert_query_vars'));
 			add_action('wp_loaded', array($this, 'flush_rules'));
-			add_filter('posts_join', array($this, 'posts_join'));
-			add_filter('posts_where', array($this, 'posts_where'));
-			add_filter('posts_orderby', array($this, 'posts_orderby'));
-			add_filter('post_limits', array($this, 'post_limits'));
 		}
+
+		add_filter('posts_join', array($this, 'posts_join'));
+		add_filter('posts_where', array($this, 'posts_where'));
+		add_filter('posts_orderby', array($this, 'posts_orderby'));
+		add_filter('post_limits', array($this, 'post_limits'));
 	}
 	
 	function register() {
@@ -217,8 +218,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		$rules = get_option('rewrite_rules');
 		foreach ($this->rewrite_rules as $rule => $rewrite) {
 			if (!isset($rules[$rule])) {
-				global $wp_rewrite;
-				$wp_rewrite->flush_rules();
+				Press_News_Events::flush_rules();
 				break;
 			}
 		}
