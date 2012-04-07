@@ -7,10 +7,17 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	
 	function __construct() {
 		parent::__construct();
-		add_action('admin_menu', array($this, 'boilder_plate_menu'));
 		add_action('admin_init', array($this, 'save_boiler_plate'));
-		add_filter('the_content', array($this, 'inject_boilerplate'));
-		add_action('wp_before_admin_bar_render', array($this, 'admin_bar'));
+		
+		$settings = get_option('pne_settings_press_releases', array(
+			'use_boilerplate'
+		));
+		
+		if (in_array('use_boilerplate', $settings)) {
+			add_action('admin_menu', array($this, 'boilder_plate_menu'));
+			add_filter('the_content', array($this, 'inject_boilerplate'));
+			add_action('wp_before_admin_bar_render', array($this, 'admin_bar'));
+		}
 	}
 	
 	function register() {

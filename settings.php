@@ -6,6 +6,7 @@ class PNE_Settings {
 		add_action('admin_menu', array($this, 'add_settings_page'));
 		add_action('admin_init', array($this, 'register_auto_archive'));
 		add_action('admin_init', array($this, 'register_inject_meta'));
+		add_action('admin_init', array($this, 'register_press_release'));
 		add_filter("plugin_action_links_".plugin_basename(__FILE__), array($this, 'settings_link'));
 	}
 
@@ -30,6 +31,7 @@ class PNE_Settings {
 					settings_fields('pne_settings');
 					do_settings_sections('pne_settings_auto_archive');
 					do_settings_sections('pne_settings_inject_meta');
+					do_settings_sections('pne_settings_press_releases');
 				?>
 				<input type="submit" class="button-primary" value="<?=esc_attr(__("Save Settings"))?>" />
 			</form>
@@ -42,7 +44,7 @@ class PNE_Settings {
 		register_setting(
 			'pne_settings',
 			'pne_settings_auto_archive',
-			array($this, 'sanitize_checkboxes')
+			array($this, 'checkboxes_to_array')
 		);
 		
 		add_settings_section(
@@ -92,7 +94,7 @@ class PNE_Settings {
 		register_setting(
 			'pne_settings',
 			'pne_settings_inject_meta',
-			array($this, 'sanitize_checkboxes')
+			array($this, 'checkboxes_to_array')
 		);
 	
 		add_settings_section(
@@ -136,11 +138,54 @@ class PNE_Settings {
 		return in_array($slug, get_option('pne_settings_inject_meta', array('event', 'news', 'press-release')));
 	}
 	
+	// Press Release Settings ------------------------------------------------------------
+	
+	function register_press_release() {
+		register_setting(
+			'pne_settings',
+			'pne_settings_press_releases',
+			array($this, 'checkboxes_to_array')
+		);
+	
+		add_settings_section(
+			'pne_settings_section_press_releases',
+			__("Press Release Options", 'press-news-events'),
+			array($this, 'press_releases_settings'),
+			'pne_settings_press_releases'
+		);
+		
+		add_settings_field(
+			'pne_settings_press_releases',
+			__("Boilerplate:", 'press-news-events'),
+			array($this, 'press_releases_input'),
+			'pne_settings_press_releases',
+			'pne_settings_section_press_releases'
+		);	
+	}
+	
+	function press_releases_settings() { ?>
+		<!-- no directions -->
+	<?php }
+	
+	function press_releases_input() {
+		$options = get_option('pne_settings_press_releases', array(
+			'use_boilerplate'
+		));
+		?>
+		<input
+			type="checkbox"
+			name="pne_settings_press_releases[use_boilerplate]"
+			id="pne_options_inject_meta_use_boilerplate"
+			<?=checked(in_array('use_boilerplate', $options))?>
+		/>
+		<label for="pne_options_inject_meta_use_boilerplate"><?=__("Use a boilerplate for press releases")?></label>
+	<?php }
+	
 	// Misc -------------------------------------------------------------------
 	
 	// TODO: flush rules
 	
-	function sanitize_checkboxes($input) {
+	function checkboxes_to_array($input) {
 		Press_News_Events::flush_rules();
 		return is_array($input) ? array_keys($input) : array();
 	}
