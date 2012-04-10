@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-events\n"
-"POT-Creation-Date: 2012-03-30 18:36:56+00:00\n"
+"POT-Creation-Date: 2012-04-10 21:16:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,81 +12,88 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-post-types/event.php:24 custom-post-types/event.php:25
-#: custom-post-types/event.php:28 custom-post-types/event.php:29 index.php:96
+#: custom-post-types/event.php:25 custom-post-types/event.php:26
+#: custom-post-types/event.php:29 custom-post-types/event.php:30
+#: settings.php:72 settings.php:123
 msgid "Event"
 msgid_plural "Events"
 msgstr[0] ""
 msgstr[1] ""
 
-#: custom-post-types/event.php:30 custom-post-types/event.php:31
+#: custom-post-types/event.php:31 custom-post-types/event.php:32
 msgid "Add New Event"
 msgstr ""
 
-#: custom-post-types/event.php:32
+#: custom-post-types/event.php:33
 msgid "Edit Event"
 msgstr ""
 
-#: custom-post-types/event.php:33
+#: custom-post-types/event.php:34
 msgid "New Event"
 msgstr ""
 
-#: custom-post-types/event.php:34
+#: custom-post-types/event.php:35
 msgid "View Event"
 msgstr ""
 
-#: custom-post-types/event.php:35
+#: custom-post-types/event.php:36
 msgid "Search Events"
 msgstr ""
 
-#: custom-post-types/event.php:36
+#: custom-post-types/event.php:37
 msgid "No Events found"
 msgstr ""
 
-#: custom-post-types/event.php:37
+#: custom-post-types/event.php:38
 msgid "No Events found in Trash"
 msgstr ""
 
-#: custom-post-types/event.php:50 custom-post-types/news.php:34
+#: custom-post-types/event.php:51 custom-post-types/news.php:34
 msgid "Options"
 msgstr ""
 
-#: custom-post-types/event.php:77
+#: custom-post-types/event.php:78
 msgid "Location:"
 msgstr ""
 
-#: custom-post-types/event.php:81
+#: custom-post-types/event.php:82
 msgid "Event Date:"
 msgstr ""
 
-#: custom-post-types/event.php:93
+#: custom-post-types/event.php:94
 msgid "Time:"
 msgstr ""
 
-#: custom-post-types/event.php:103
+#: custom-post-types/event.php:104
 msgid "All Day"
 msgstr ""
 
-#: custom-post-types/event.php:112
+#: custom-post-types/event.php:113
 msgid "6:30pm"
 msgstr ""
 
-#: custom-post-types/event.php:114
+#: custom-post-types/event.php:115
 msgctxt "starting time *to* ending time"
 msgid "to"
 msgstr ""
 
-#: custom-post-types/event.php:120
+#: custom-post-types/event.php:121
 msgid "9:30pm"
 msgstr ""
 
-#: custom-post-types/event.php:171 custom-post-types/news.php:100
+#: custom-post-types/event.php:172 custom-post-types/news.php:100
 msgctxt "column header"
 msgid "Date"
 msgstr ""
 
+#: custom-post-types/event.php:269
+msgctxt "(an event being held) at [location name]"
+msgid "at <span class='location'>%s</span>"
+msgstr ""
+
 #: custom-post-types/news.php:10 custom-post-types/news.php:11
-#: custom-post-types/news.php:14 custom-post-types/news.php:15 index.php:107
+#: custom-post-types/news.php:14 custom-post-types/news.php:15 settings.php:74
+#: settings.php:125
 msgid "News Story"
 msgid_plural "News Stories"
 msgstr[0] ""
@@ -137,87 +144,140 @@ msgctxt "column header"
 msgid "Link"
 msgstr ""
 
-#: custom-post-types/press-release.php:17
-#: custom-post-types/press-release.php:18
-#: custom-post-types/press-release.php:21
-#: custom-post-types/press-release.php:22 index.php:118
+#: custom-post-types/press-release.php:24
+#: custom-post-types/press-release.php:25
+#: custom-post-types/press-release.php:28
+#: custom-post-types/press-release.php:29 settings.php:73 settings.php:124
 msgid "Press Release"
 msgid_plural "Press Releases"
 msgstr[0] ""
 msgstr[1] ""
 
-#: custom-post-types/press-release.php:23
-#: custom-post-types/press-release.php:24
+#: custom-post-types/press-release.php:30
+#: custom-post-types/press-release.php:31
 msgid "Add New Press Release"
 msgstr ""
 
-#: custom-post-types/press-release.php:25
+#: custom-post-types/press-release.php:32
 msgid "Edit Press Release"
 msgstr ""
 
-#: custom-post-types/press-release.php:26
+#: custom-post-types/press-release.php:33
 msgid "New Press Release"
 msgstr ""
 
-#: custom-post-types/press-release.php:27
+#: custom-post-types/press-release.php:34
 msgid "View Press Release"
 msgstr ""
 
-#: custom-post-types/press-release.php:28
+#: custom-post-types/press-release.php:35
 msgid "Search Press Releases"
 msgstr ""
 
-#: custom-post-types/press-release.php:29
+#: custom-post-types/press-release.php:36
 msgid "No Press Releases found"
 msgstr ""
 
-#: custom-post-types/press-release.php:30
+#: custom-post-types/press-release.php:37
 msgid "No Press Releases found in Trash"
 msgstr ""
 
-#: custom-post-types/press-release.php:39
-#: custom-post-types/press-release.php:49
+#: custom-post-types/press-release.php:46
+#: custom-post-types/press-release.php:56
 msgid "Press Release Boilerplate"
 msgstr ""
 
-#: custom-post-types/press-release.php:40
+#: custom-post-types/press-release.php:47
 msgid "Boilerplate"
 msgstr ""
 
-#: custom-post-types/press-release.php:50
+#: custom-post-types/press-release.php:57
 msgid ""
 "This press release boilerplate is shown at the bottom of all press "
 "releases.  Updating the boilerplate will update all past and future press "
 "releases."
 msgstr ""
 
-#: custom-post-types/press-release.php:57 index.php:123
+#: custom-post-types/press-release.php:64
 msgid "Save"
 msgstr ""
 
-#: custom-post-types/press-release.php:65
+#: custom-post-types/press-release.php:72
 msgid "boilerplate saved"
 msgstr ""
 
-#: custom-post-types/press-release.php:83
+#: custom-post-types/press-release.php:90
 msgid "Edit Boilerplate"
 msgstr ""
 
-#: index.php:69 index.php:79
+#: index.php:117 index.php:124 index.php:128 index.php:129 index.php:140
+msgid "F j, Y"
+msgstr ""
+
+#: index.php:118
+msgid "H i"
+msgstr ""
+
+#: index.php:119
+msgid "F Y"
+msgstr ""
+
+#: index.php:120 index.php:132 index.php:133 index.php:136 index.php:137
+msgid "Y"
+msgstr ""
+
+#: index.php:125 index.php:141
+msgid "F j g:ia, Y"
+msgstr ""
+
+#: index.php:129
+msgid "g:ia"
+msgstr ""
+
+#: index.php:132 index.php:136
+msgid "F j"
+msgstr ""
+
+#: index.php:132
+msgid "j"
+msgstr ""
+
+#: index.php:133 index.php:137
+msgid "F j g:ia"
+msgstr ""
+
+#: index.php:133
+msgid "j g:ia"
+msgstr ""
+
+#: settings.php:17
 msgctxt "admin options page title"
 msgid "Press, News and Events Options"
 msgstr ""
 
-#: index.php:70
+#: settings.php:18
 msgctxt "admin options page menu title"
 msgid "Press, News, Events"
 msgstr ""
 
-#: index.php:84
+#: settings.php:27
+msgctxt "admin settings page title"
+msgid "Press, News and Events Settings"
+msgstr ""
+
+#: settings.php:36
+msgid "Save Settings"
+msgstr ""
+
+#: settings.php:52
 msgid "Custom Post Type Archives"
 msgstr ""
 
-#: index.php:85
+#: settings.php:59
+msgid "Create an archive page for:"
+msgstr ""
+
+#: settings.php:67
 msgid ""
 "The plugin can create archive pages for each of the post types, similar to "
 "your blog index.  This is a handy way to display all you press, news and "
@@ -229,50 +289,28 @@ msgid ""
 "change the top heading on the page."
 msgstr ""
 
-#: index.php:88
-msgid "Create an archive page for:"
+#: settings.php:102
+msgid "Add Information"
 msgstr ""
 
-#: index.php:134
-msgid "options saved"
+#: settings.php:109
+msgid "Add info for:"
 msgstr ""
 
-#: index.php:176 index.php:183 index.php:187 index.php:188 index.php:199
-msgid "F j, Y"
+#: settings.php:117
+msgid ""
+"The plugin can add post type specific information to pages and pages.  For "
+"instance, it can put the date and location in the content of each event."
 msgstr ""
 
-#: index.php:177
-msgid "H i"
+#: settings.php:152
+msgid "Press Release Options"
 msgstr ""
 
-#: index.php:178
-msgid "F Y"
+#: settings.php:159
+msgid "Boilerplate:"
 msgstr ""
 
-#: index.php:179 index.php:191 index.php:192 index.php:195 index.php:196
-msgid "Y"
-msgstr ""
-
-#: index.php:184 index.php:200
-msgid "F j g:ia, Y"
-msgstr ""
-
-#: index.php:188
-msgid "g:ia"
-msgstr ""
-
-#: index.php:191 index.php:195
-msgid "F j"
-msgstr ""
-
-#: index.php:191
-msgid "j"
-msgstr ""
-
-#: index.php:192 index.php:196
-msgid "F j g:ia"
-msgstr ""
-
-#: index.php:192
-msgid "j g:ia"
+#: settings.php:181
+msgid "Use a boilerplate for press releases"
 msgstr ""
