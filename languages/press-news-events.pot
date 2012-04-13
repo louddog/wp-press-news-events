@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-events\n"
-"POT-Creation-Date: 2012-04-10 21:16:58+00:00\n"
+"POT-Creation-Date: 2012-04-12 21:13:10+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "No Events found in Trash"
 msgstr ""
 
-#: custom-post-types/event.php:51 custom-post-types/news.php:34
+#: custom-post-types/event.php:51 custom-post-types/news.php:41
 msgid "Options"
 msgstr ""
 
@@ -81,7 +81,7 @@ msgstr ""
 msgid "9:30pm"
 msgstr ""
 
-#: custom-post-types/event.php:172 custom-post-types/news.php:100
+#: custom-post-types/event.php:172 custom-post-types/news.php:107
 msgctxt "column header"
 msgid "Date"
 msgstr ""
@@ -91,55 +91,55 @@ msgctxt "(an event being held) at [location name]"
 msgid "at <span class='location'>%s</span>"
 msgstr ""
 
-#: custom-post-types/news.php:10 custom-post-types/news.php:11
-#: custom-post-types/news.php:14 custom-post-types/news.php:15 settings.php:74
+#: custom-post-types/news.php:17 custom-post-types/news.php:18
+#: custom-post-types/news.php:21 custom-post-types/news.php:22 settings.php:74
 #: settings.php:125
 msgid "News Story"
 msgid_plural "News Stories"
 msgstr[0] ""
 msgstr[1] ""
 
-#: custom-post-types/news.php:16 custom-post-types/news.php:17
+#: custom-post-types/news.php:23 custom-post-types/news.php:24
 msgid "Add New News Story"
 msgstr ""
 
-#: custom-post-types/news.php:18
+#: custom-post-types/news.php:25
 msgid "Edit News Story"
 msgstr ""
 
-#: custom-post-types/news.php:19
+#: custom-post-types/news.php:26
 msgid "New News Story"
 msgstr ""
 
-#: custom-post-types/news.php:20
+#: custom-post-types/news.php:27
 msgid "View News Story"
 msgstr ""
 
-#: custom-post-types/news.php:21
+#: custom-post-types/news.php:28
 msgid "Search News Stories"
 msgstr ""
 
-#: custom-post-types/news.php:22
+#: custom-post-types/news.php:29
 msgid "No News Stories found"
 msgstr ""
 
-#: custom-post-types/news.php:23
+#: custom-post-types/news.php:30
 msgid "No News Stories found in Trash"
 msgstr ""
 
-#: custom-post-types/news.php:55
+#: custom-post-types/news.php:62
 msgid "Link:"
 msgstr ""
 
-#: custom-post-types/news.php:63
+#: custom-post-types/news.php:70
 msgid "link"
 msgstr ""
 
-#: custom-post-types/news.php:68
+#: custom-post-types/news.php:75
 msgid "News Date:"
 msgstr ""
 
-#: custom-post-types/news.php:101
+#: custom-post-types/news.php:108
 msgctxt "column header"
 msgid "Link"
 msgstr ""

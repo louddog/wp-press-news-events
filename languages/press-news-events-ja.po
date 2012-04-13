@@ -2,218 +2,287 @@
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Press, News and Events \n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-and-events\n"
-"POT-Creation-Date: 2012-03-29 18:07:18+00:00\n"
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-events\n"
+"POT-Creation-Date: 2012-04-12 21:13:10+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-03-28 16:02-0800\n"
-"Last-Translator: Loud Dog <info@louddog.com>\n"
-"Language-Team: Loud Dog <info@louddog.com> \n"
+"PO-Revision-Date: 2012-04-12 16:43+0900\n"
+"Last-Translator: Takeshi Nakajima <tnakaji@midokura.jp>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: custom-post-types/event.php:23 custom-post-types/event.php:24
-#: custom-post-types/event.php:27 custom-post-types/event.php:28 index.php:96
+# イベント
+#: custom-post-types/event.php:25 custom-post-types/event.php:26
+#: custom-post-types/event.php:29 custom-post-types/event.php:30
+#: settings.php:72 settings.php:123
 msgid "Event"
 msgid_plural "Events"
-msgstr[0] "イベント"
-msgstr[1] "イベント"
+msgstr[0] ""
+msgstr[1] ""
 
-#: custom-post-types/event.php:29 custom-post-types/event.php:30
+#: custom-post-types/event.php:31 custom-post-types/event.php:32
 msgid "Add New Event"
-msgstr "新しいイベントを追加する"
-
-#: custom-post-types/event.php:31
-msgid "Edit Event"
-msgstr "イベントを編集します。"
-
-#: custom-post-types/event.php:32
-msgid "New Event"
-msgstr "イベントを編集します。"
+msgstr "新規イベントを追加"
 
 #: custom-post-types/event.php:33
-msgid "View Event"
-msgstr "イベントを見る"
+msgid "Edit Event"
+msgstr "イベントを編集"
 
 #: custom-post-types/event.php:34
-msgid "Search Events"
-msgstr "イベント検索"
+msgid "New Event"
+msgstr "新規イベント"
 
 #: custom-post-types/event.php:35
-msgid "No Events found"
-msgstr "何のイベントが見つかりませんでした"
+msgid "View Event"
+msgstr "イベント情報を閲覧"
 
 #: custom-post-types/event.php:36
-msgid "No Events found in Trash"
-msgstr "何もイベントがゴミ箱に見つかりません"
+msgid "Search Events"
+msgstr "イベントを検索"
 
-#: custom-post-types/event.php:49 custom-post-types/news.php:33
+#: custom-post-types/event.php:37
+msgid "No Events found"
+msgstr "イベントが見つかりませんでした。"
+
+#: custom-post-types/event.php:38
+msgid "No Events found in Trash"
+msgstr "ゴミ箱にイベントはありません。"
+
+#: custom-post-types/event.php:51 custom-post-types/news.php:41
 msgid "Options"
 msgstr "オプション"
 
-#: custom-post-types/event.php:76
+#: custom-post-types/event.php:78
 msgid "Location:"
-msgstr "場所："
+msgstr "場所:"
 
-#: custom-post-types/event.php:80
+#: custom-post-types/event.php:82
 msgid "Event Date:"
-msgstr "イベント日："
+msgstr "イベントの日付:"
 
-#: custom-post-types/event.php:92
+#: custom-post-types/event.php:94
 msgid "Time:"
-msgstr "時間："
+msgstr "時間:"
 
-#: custom-post-types/event.php:102
+#: custom-post-types/event.php:104
 msgid "All Day"
 msgstr "終日"
 
-#: custom-post-types/event.php:111
-msgid "6:30pm"
-msgstr "18:30"
-
 #: custom-post-types/event.php:113
+msgid "6:30pm"
+msgstr "6:30pm"
+
+#: custom-post-types/event.php:115
 msgctxt "starting time *to* ending time"
 msgid "to"
-msgstr "へ"
+msgstr "〜"
 
-#: custom-post-types/event.php:119
+#: custom-post-types/event.php:121
 msgid "9:30pm"
-msgstr "21:30"
+msgstr "9:30pm"
 
-#: custom-post-types/event.php:170 custom-post-types/news.php:99
+#: custom-post-types/event.php:172 custom-post-types/news.php:107
 msgctxt "column header"
 msgid "Date"
 msgstr "日付"
 
-#: custom-post-types/news.php:9 custom-post-types/news.php:10
-#: custom-post-types/news.php:13 custom-post-types/news.php:14 index.php:107
+#: custom-post-types/event.php:269
+msgctxt "(an event being held) at [location name]"
+msgid "at <span class='location'>%s</span>"
+msgstr "於 <span class='location'>%s</span>"
+
+# ニュース記事
+#: custom-post-types/news.php:17 custom-post-types/news.php:18
+#: custom-post-types/news.php:21 custom-post-types/news.php:22 settings.php:74
+#: settings.php:125
 msgid "News Story"
 msgid_plural "News Stories"
-msgstr[0] "ニュース記事"
-msgstr[1] "ニュース"
+msgstr[0] ""
+msgstr[1] ""
 
-#: custom-post-types/news.php:15 custom-post-types/news.php:16
+#: custom-post-types/news.php:23 custom-post-types/news.php:24
 msgid "Add New News Story"
-msgstr "新しいニュースを追加ストーリー"
+msgstr "新規ニュース記事を追加"
 
-#: custom-post-types/news.php:17
+#: custom-post-types/news.php:25
 msgid "Edit News Story"
 msgstr "ニュース記事を編集"
 
-#: custom-post-types/news.php:18
+#: custom-post-types/news.php:26
 msgid "New News Story"
-msgstr "新しいニュース·ストーリー"
+msgstr "新規ニュース記事"
 
-#: custom-post-types/news.php:19
+#: custom-post-types/news.php:27
 msgid "View News Story"
-msgstr "ニュース記事を見る"
+msgstr "ニュース記事を閲覧"
 
-#: custom-post-types/news.php:20
+#: custom-post-types/news.php:28
 msgid "Search News Stories"
-msgstr "検索ニュースストーリー"
+msgstr "ニュース記事を検索"
 
-#: custom-post-types/news.php:21
+#: custom-post-types/news.php:29
 msgid "No News Stories found"
-msgstr "いいえニュース記事は見つかりませんでした"
+msgstr "ニュース記事が見つかりませんでした。"
 
-#: custom-post-types/news.php:22
+#: custom-post-types/news.php:30
 msgid "No News Stories found in Trash"
-msgstr "いいえニュース記事では、ゴミ箱に見つかりません"
-
-#: custom-post-types/news.php:54
-msgid "Link:"
-msgstr "リンク："
+msgstr "ゴミ箱にニュース記事はありません。"
 
 #: custom-post-types/news.php:62
+msgid "Link:"
+msgstr "リンク: "
+
+#: custom-post-types/news.php:70
 msgid "link"
 msgstr "リンク"
 
-#: custom-post-types/news.php:67
+#: custom-post-types/news.php:75
 msgid "News Date:"
-msgstr "ニュース日付："
+msgstr "ニュースの日付"
 
-#: custom-post-types/news.php:100
+#: custom-post-types/news.php:108
 msgctxt "column header"
 msgid "Link"
 msgstr "リンク"
 
-#: custom-post-types/press-release.php:15
-#: custom-post-types/press-release.php:16
-#: custom-post-types/press-release.php:19
-#: custom-post-types/press-release.php:20 index.php:118
+# プレスリリース
+#: custom-post-types/press-release.php:24
+#: custom-post-types/press-release.php:25
+#: custom-post-types/press-release.php:28
+#: custom-post-types/press-release.php:29 settings.php:73 settings.php:124
 msgid "Press Release"
 msgid_plural "Press Releases"
-msgstr[0] "プレスリリース"
-msgstr[1] "プレスリリース"
+msgstr[0] ""
+msgstr[1] ""
 
-#: custom-post-types/press-release.php:21
-#: custom-post-types/press-release.php:22
+#: custom-post-types/press-release.php:30
+#: custom-post-types/press-release.php:31
 msgid "Add New Press Release"
-msgstr "新しいプレスリリースを追加します。"
+msgstr "新規プレスリリースを追加"
 
-#: custom-post-types/press-release.php:23
+#: custom-post-types/press-release.php:32
 msgid "Edit Press Release"
-msgstr "プレスリリースを編集します。"
+msgstr "プレスリリースを編集"
 
-#: custom-post-types/press-release.php:24
+#: custom-post-types/press-release.php:33
 msgid "New Press Release"
-msgstr "新しいプレスリリース"
+msgstr "新規プレスリリース"
 
-#: custom-post-types/press-release.php:25
+#: custom-post-types/press-release.php:34
 msgid "View Press Release"
-msgstr "プレスリリースを見る"
+msgstr "プレスリリースを閲覧"
 
-#: custom-post-types/press-release.php:26
+#: custom-post-types/press-release.php:35
 msgid "Search Press Releases"
 msgstr "プレスリリースを検索"
 
-#: custom-post-types/press-release.php:27
+#: custom-post-types/press-release.php:36
 msgid "No Press Releases found"
-msgstr "いいえプレスリリースが見つかりませんでした"
-
-#: custom-post-types/press-release.php:28
-msgid "No Press Releases found in Trash"
-msgstr "いいえプレスリリースをゴミ箱に見つかりません"
+msgstr "プレスリリースが見つかりませんでした。"
 
 #: custom-post-types/press-release.php:37
-#: custom-post-types/press-release.php:47
+msgid "No Press Releases found in Trash"
+msgstr "ゴミ箱にプレスリリースはありません。"
+
+#: custom-post-types/press-release.php:46
+#: custom-post-types/press-release.php:56
 msgid "Press Release Boilerplate"
-msgstr "リリースボイラーを押してください"
+msgstr "プレスリリース定型文"
 
-#: custom-post-types/press-release.php:38
+#: custom-post-types/press-release.php:47
 msgid "Boilerplate"
-msgstr "決まり文句"
+msgstr "定型文"
 
-#: custom-post-types/press-release.php:48
+#: custom-post-types/press-release.php:57
 msgid ""
 "This press release boilerplate is shown at the bottom of all press "
 "releases.  Updating the boilerplate will update all past and future press "
 "releases."
-msgstr "このプレスリリースの定型は、すべてのプレスリリースの下部に表示されます。ボイラーを更新すると、すべての過去と未来のプレスリリースを更新します。"
+msgstr "この定型文は全てのプレスリリースの下部に使用されます。この定型文を編集すると過去のリリース文も今後のリリース文も新規定型文に置き換わります。"
 
-#: custom-post-types/press-release.php:55 index.php:123
+#: custom-post-types/press-release.php:64
 msgid "Save"
-msgstr "セーブ"
+msgstr "保存"
 
-#: custom-post-types/press-release.php:63
+#: custom-post-types/press-release.php:72
 msgid "boilerplate saved"
-msgstr "定型は、保存された"
+msgstr "定型文が保存されました。"
 
-#: index.php:69 index.php:79
+#: custom-post-types/press-release.php:90
+msgid "Edit Boilerplate"
+msgstr "定型文の編集"
+
+#: index.php:117 index.php:124 index.php:128 index.php:129 index.php:140
+msgid "F j, Y"
+msgstr "F j, Y"
+
+#: index.php:118
+msgid "H i"
+msgstr "H i"
+
+#: index.php:119
+msgid "F Y"
+msgstr "F Y"
+
+#: index.php:120 index.php:132 index.php:133 index.php:136 index.php:137
+msgid "Y"
+msgstr "Y"
+
+#: index.php:125 index.php:141
+msgid "F j g:ia, Y"
+msgstr "F j g:ia, Y"
+
+#: index.php:129
+msgid "g:ia"
+msgstr "g:ia"
+
+#: index.php:132 index.php:136
+msgid "F j"
+msgstr "F j"
+
+#: index.php:132
+msgid "j"
+msgstr "j"
+
+#: index.php:133 index.php:137
+msgid "F j g:ia"
+msgstr "F j g:ia"
+
+#: index.php:133
+msgid "j g:ia"
+msgstr "j g:ia"
+
+#: settings.php:17
 msgctxt "admin options page title"
 msgid "Press, News and Events Options"
-msgstr "を押して、ニュースとイベントのオプション"
+msgstr "プレス、ニュース、イベントのオプション"
 
-#: index.php:70
+#: settings.php:18
 msgctxt "admin options page menu title"
 msgid "Press, News, Events"
 msgstr "プレス、ニュース、イベント"
 
-#: index.php:84
-msgid "Custom Post Type Archives"
-msgstr "カスタム投稿タイプのアーカイブ"
+#: settings.php:27
+msgctxt "admin settings page title"
+msgid "Press, News and Events Settings"
+msgstr "プレス、ニュース、イベントの設定"
 
-#: index.php:85
+#: settings.php:36
+msgid "Save Settings"
+msgstr "設定の保存"
+
+# what is "post type"?
+#: settings.php:52
+msgid "Custom Post Type Archives"
+msgstr "カスタムポスト種別のアーカイブ"
+
+#: settings.php:59
+msgid "Create an archive page for:"
+msgstr "次のポストのアーカイブページを作成する:"
+
+# Need to know where his diagram? is shown to whom. 
+#: settings.php:67
 msgid ""
 "The plugin can create archive pages for each of the post types, similar to "
 "your blog index.  This is a handy way to display all you press, news and "
@@ -223,52 +292,32 @@ msgid ""
 "codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special "
 "template files</a> for each archive.  If for no other reason, it's good to "
 "change the top heading on the page."
-msgstr "プラグインは、あなたのブログのインデックスと同様に、ポストの種類ごとにアーカイブページを作成することができます。これは、押して、ニュースやイベントを表示する便利な方法です。しかし、あなたは以下のように同じURLを使用して、独自のページを作りたい場合は、これらのアーカイブは衝突され、オフにする必要があります。あなたがそれらを維持することにしたならば、あなたは特別なテンプレートfilesfor、各アーカイブの作成に興味があるかもしれません。他の理由なら、それはページの見出しトップを変更するには良いことだ。"
+msgstr "プラグインは、ブログのインデックスと同じで、各ポスト種別のアーカイブページを作成する事ができます。プレス、ニュースやイベントの情報を一覧で表示するのに便利です。しかし、下記URLを利用して自身でページを作成する場合は、アーカイブに競合が起こるので無効にしておく必要があります。このままアーカイブをキープされる場合は、各アーカイブに <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> を作成するのをお勧めします。ページのヘッディングを変更する事もお勧めします。"
 
-#: index.php:88
-msgid "Create an archive page for:"
-msgstr "のアーカイブページを作成します。"
+#: settings.php:102
+msgid "Add Information"
+msgstr "情報の追加"
 
-#: index.php:134
-msgid "options saved"
-msgstr "オプションが保存された"
+#: settings.php:109
+msgid "Add info for:"
+msgstr "次に情報を追加: "
 
-#: index.php:176 index.php:183 index.php:187 index.php:188 index.php:199
-msgid "F j, Y"
-msgstr ""
+# ”...pages and pages"???
+#: settings.php:117
+msgid ""
+"The plugin can add post type specific information to pages and pages.  For "
+"instance, it can put the date and location in the content of each event."
+msgstr "プラグインは、ポストの種別固有の情報をページに追加する事ができます。例えば、各イベントの内容に日付や場所の情報を入れる事ができます。"
 
-#: index.php:177
-msgid "H i"
-msgstr ""
+#: settings.php:152
+msgid "Press Release Options"
+msgstr "プレスリリースのオプション"
 
-#: index.php:178
-msgid "F Y"
-msgstr ""
+#: settings.php:159
+msgid "Boilerplate:"
+msgstr "定型文:"
 
-#: index.php:179 index.php:191 index.php:192 index.php:195 index.php:196
-msgid "Y"
-msgstr ""
+#: settings.php:181
+msgid "Use a boilerplate for press releases"
+msgstr "プレスリリースに定型文を使用する。"
 
-#: index.php:184 index.php:200
-msgid "F j g:ia, Y"
-msgstr ""
-
-#: index.php:188
-msgid "g:ia"
-msgstr ""
-
-#: index.php:191 index.php:195
-msgid "F j"
-msgstr ""
-
-#: index.php:191
-msgid "j"
-msgstr ""
-
-#: index.php:192 index.php:196
-msgid "F j g:ia"
-msgstr ""
-
-#: index.php:192
-msgid "j g:ia"
-msgstr ""
