@@ -4,7 +4,7 @@ Donate link: http://www.louddog.com
 Tags: press releases, events, news, custom post type
 Requires at least: 3.3.1
 Tested up to: 3.3.1
-Stable tag: 1_0_0
+Stable tag: 1_1_0
 
 Create custom post types for press releases, references to external news stories, and events.
 
@@ -32,6 +32,11 @@ We've not had any questions frequently asked.
 3. Global options for the plugin.
 
 == Changelog ==
+
+= 1.1 =
+* News archive sorts by external story publication date.
+* Press Release boilerplate is optional.
+* Misc. bug fixes.
 
 = 1.0 =
 * Hello world.

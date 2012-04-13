@@ -3,11 +3,11 @@
 Plugin Name: Press, News, Events
 Description: Create custom post types for press releases, references to external news stories, and events.
 Author: Loud Dog
-Version: 1.0
+Version: 1.1
 Author URI: http://www.louddog.com
 */
 
-define('PRESS_NEWS_EVENTS_VERSION', '1.0');
+define('PRESS_NEWS_EVENTS_VERSION', '1.1');
 
 new Press_News_Events;
 class Press_News_Events {
