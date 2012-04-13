@@ -5,6 +5,13 @@ class PNE_News extends PNE_Custom_Post_Type {
 	var $slug = 'news';
 	var $archive_slug = 'news';
 	var $supports = array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions');
+	
+	function __construct() {
+		parent::__construct();
+		
+		add_filter('posts_join', array($this, 'posts_join'));
+		add_filter('posts_orderby', array($this, 'posts_orderby'));
+	}
 
 	function register() {
 		$this->singular = _n("News Story", "News Stories", 1, 'press-news-events');
@@ -116,6 +123,28 @@ class PNE_News extends PNE_Custom_Post_Type {
 				if (!empty($link)) echo "<a href='$link' target='_blank'>$link</a>";
 				break;
 		}
+	}
+	
+	// Manipulate archive order -----------------------------------------------
+	
+	function can_modify_query() {
+		return !is_admin() && is_post_type_archive($this->slug);
+	}
+	
+	function posts_join($join) {
+		global $wpdb;
+		if ($this->can_modify_query()) {
+			$join .= " LEFT JOIN $wpdb->postmeta news_date on ($wpdb->posts.ID = news_date.post_id AND news_date.meta_key = '_date') ";
+		}
+		return $join;
+	}
+	
+	function posts_orderby($orderby) {
+		global $wpdb;
+		if ($this->can_modify_query()) {
+			$orderby = "news_date.meta_value DESC, $wpdb->posts.post_date DESC";
+		}
+		return $orderby;
 	}
 	
 	// Shortcode --------------------------------------------------------------
