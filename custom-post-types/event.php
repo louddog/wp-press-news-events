@@ -237,7 +237,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		global $wpdb;
 		if ($this->can_modify_query()) {
 			$compare = get_query_var('pne_archive_type') == 'past' ? '<' : '>';
-			$time = current_time('timestamp') - 43200; // compare against 12 hours ago
+			$time = self::cutoff_time();
 			$where .= " AND COALESCE(ends.meta_value, starts.meta_value) $compare $time";
 		}
 		return $where;
@@ -257,6 +257,10 @@ class PNE_Event extends PNE_Custom_Post_Type {
 			$limit = '';
 		}
 		return $limit;
+	}
+	
+	static function cutoff_time() {
+		return current_time('timestamp') - 43200;  // compare against 12 hours ago
 	}
 	
 	// Shortcode --------------------------------------------------------------
@@ -286,4 +290,22 @@ class PNE_Event extends PNE_Custom_Post_Type {
 
 		return $pieces;
 	}
+	
+	// Static -----------------------------------------------------------------
+	
+	static function past_events_count() {
+		global $wpdb;
+		$time = self::cutoff_time();
+		return $wpdb->get_var(
+			"SELECT count(post.ID)
+			FROM $wpdb->posts post
+			LEFT JOIN $wpdb->postmeta starts on (post.ID = starts.post_id AND starts.meta_key = '_starts')
+			LEFT JOIN $wpdb->postmeta ends on (post.ID = ends.post_id AND ends.meta_key = '_ends')
+			WHERE 1=1 AND post.post_type = 'event'
+			AND (post.post_status = 'publish' OR post.post_status = 'private')
+			AND COALESCE(ends.meta_value, starts.meta_value) < $time
+			ORDER BY starts.meta_value DESC, post.post_date DESC"
+		);
+	}
+	
 }
