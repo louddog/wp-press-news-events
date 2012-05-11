@@ -1,5 +1,5 @@
 === Plugin Name ===  
-Contributors: mattdeclaire
+Contributors: mattdeclaire, briankwa
 Donate link: http://www.louddog.com
 Tags: press releases, events, news, custom post type
 Requires at least: 3.3.1
