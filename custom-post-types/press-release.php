@@ -37,6 +37,19 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 			'not_found_in_trash' => __("No Press Releases found in Trash", 'press-news-events'),
 		);
 		
+		$this->cat_labels = array(
+			'name' => __('Press Release Categories', 'press-news-events'),
+			'singular_name' => __('Press Release Category', 'press-news-events'),
+			'search_items' =>  __('Search Press Release Categories', 'press-news-events'),
+			'all_items' => __('All Press Release Categories', 'press-news-events'),
+			'parent_item' => __('Parent Press Release Categories', 'press-news-events'),
+			'parent_item_colon' => __('Parent Press Release Category:', 'press-news-events'),
+			'edit_item' => __('Edit Press Release Category', 'press-news-events'), 
+			'update_item' => __('Update Press Release Category', 'press-news-events'),
+			'add_new_item' => __('Add New Press Release Category', 'press-news-events'),
+			'new_item_name' => __('New Press Release Category', 'press-news-events'),
+		);
+
 		parent::register();
 	}
 	

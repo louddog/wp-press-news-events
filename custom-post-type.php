@@ -7,6 +7,7 @@ abstract class PNE_Custom_Post_Type {
 	var $plural = false;
 	
 	var $labels = false;
+	var $cat_labels = false;
 	
 	var $public = true;
 	var $show_ui = true;
@@ -27,6 +28,18 @@ abstract class PNE_Custom_Post_Type {
 	}
 	
 	function register() {
+		register_taxonomy($this->slug.'_category', $this->slug, array(
+			'labels' => $this->cat_labels,
+			'hierarchical' => true,
+			'show_ui' => true,
+			'query_var' => true,
+			'show_in_nav_menus' => true,
+			'rewrite' => array(
+				'slug' => $this->slug.'-categories',
+				'with_front' => false,
+			),
+		)); 
+
 		register_post_type($this->slug, array_merge(array(
 			'labels' => $this->labels ? $this->labels : array(),
 			'public' => $this->public,
@@ -41,6 +54,7 @@ abstract class PNE_Custom_Post_Type {
 				'slug' => $this->archive_slug,
 				'with_front' => false,
 			),
+			'taxonomies' => array($this->slug.'_category'),
 		)));
 	}
 	
