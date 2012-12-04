@@ -75,23 +75,23 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		
 		<table class="pne_event_options">
 			<tr>
-				<td><label><?=__("Location:", 'press-news-events')?></label></td>
-				<td><textarea name="pne_event[location]" rows="4"><?=$location?></textarea></td>
+				<td><label><?php _e("Location:", 'press-news-events'); ?></label></td>
+				<td><textarea name="pne_event[location]" rows="4"><?php echo $location; ?></textarea></td>
 			</tr>
 			<tr>
-				<td><label><?=__("Event Date:", 'press-news-events')?></label></td>
+				<td><label><?php _e("Event Date:", 'press-news-events'); ?></label></td>
 				<td>
 					<div class="date_picker"></div>
 					<input
 						type="text"
 						class="date_range"
 						name="pne_event[date]"
-						value="<?=esc_attr($date_string)?>"
+						value="<?php echo esc_attr($date_string); ?>"
 					/>
 				</td>
 			</tr>
 			<tr>
-				<td><label><?=__("Time:", 'press-news-events')?></label></td>
+				<td><label><?php _e("Time:", 'press-news-events'); ?></label></td>
 				<td>
 					<p>
 						<input
@@ -101,7 +101,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 							<?php if ($all_day) echo 'checked'; ?>
 							<?php if ($starts != $ends) echo 'disabled'; ?>
 						/>
-						<label for="pne_event_all_day"><?=__("All Day", 'press-news-events')?></label>
+						<label for="pne_event_all_day"><?php _e("All Day", 'press-news-events'); ?></label>
 					</p>
 					
 					<p class="event_times">
@@ -109,16 +109,16 @@ class PNE_Event extends PNE_Custom_Post_Type {
 							type="text"
 							size="7"
 							name="pne_event[start_time]"
-							value="<?=esc_attr(date('g:ia', $starts))?>"
-							placeholder="<?=esc_attr(__("6:30pm", 'press-news-events'))?>"
+							value="<?php echo esc_attr(date('g:ia', $starts)); ?>"
+							placeholder="<?php echo esc_attr(__("6:30pm", 'press-news-events')); ?>"
 						/>
-						<?=_x("to", 'starting time *to* ending time', 'press-news-events')?>
+						<?php echo _x("to", 'starting time *to* ending time', 'press-news-events'); ?>
 						<input
 							type="text"
 							size="7"
 							name="pne_event[end_time]"
-							value="<?=esc_attr(date('g:ia', $ends))?>"
-							placeholder="<?=esc_attr(__("9:30pm", 'press-news-events'))?>"
+							value="<?php echo esc_attr(date('g:ia', $ends)); ?>"
+							placeholder="<?php echo esc_attr(__("9:30pm", 'press-news-events')); ?>"
 						/>
 					</p>
 				</td>

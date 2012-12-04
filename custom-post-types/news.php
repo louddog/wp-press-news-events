@@ -59,27 +59,27 @@ class PNE_News extends PNE_Custom_Post_Type {
 		
 		<table class="pne_news_options">
 			<tr>
-				<td><label><?=__("Link:", 'press-news-events')?></label></td>
+				<td><label><?php _e("Link:", 'press-news-events'); ?></label></td>
 				<td>
 					<input
 						type="text"
 						name="pne_news[link]"
-						value="<?=esc_attr($link)?>"
+						value="<?php echo esc_attr($link); ?>"
 					/>
 					<?php if (!empty($link)) { ?>
-						<a href="<?=$link?>" target="_blank"><?=__("link", 'press-news-events')?></a>
+						<a href="<?php echo $link; ?>" target="_blank"><?php _e("link", 'press-news-events'); ?></a>
 					<?php } ?>
 				</td>
 			</tr>
 			<tr>
-				<td><label><?=__("News Date:", 'press-news-events')?></label></td>
+				<td><label><?php _e("News Date:", 'press-news-events'); ?></label></td>
 				<td>
 					<div class="date_picker"></div>
 					<input
 						type="text"
 						class="date"
 						name="pne_news[date]"
-						value="<?=esc_attr($date_string)?>"
+						value="<?php echo esc_attr($date_string); ?>"
 					/>
 				</td>
 			</tr>

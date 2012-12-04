@@ -24,7 +24,7 @@ class PNE_Settings {
 	
 	function settings_page() { ?>
 		<div class="wrap pne_settings_page">
-			<h2><?=_x("Press, News and Events Settings", "admin settings page title", 'press-news-events')?></h2>
+			<h2><?php echo _x("Press, News and Events Settings", "admin settings page title", 'press-news-events'); ?></h2>
 			
 			<form action="options.php" method="post">
 				<?php
@@ -33,7 +33,7 @@ class PNE_Settings {
 					do_settings_sections('pne_settings_inject_meta');
 					do_settings_sections('pne_settings_press_releases');
 				?>
-				<input type="submit" class="button-primary" value="<?=esc_attr(__("Save Settings"))?>" />
+				<input type="submit" class="button-primary" value="<?php echo esc_attr(__("Save Settings")); ?>" />
 			</form>
 		</div> <!-- .wrap -->
 	<?php }
@@ -64,7 +64,7 @@ class PNE_Settings {
 	}
 		
 	function auto_archive_settings() { ?>
-		<p><?=__("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.  If for no other reason, it's good to change the top heading on the page.", 'press-news-events')?></p>
+		<p><?php _e("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.  If for no other reason, it's good to change the top heading on the page.", 'press-news-events'); ?></p>
 	<?php }
 	
 	function auto_archive_input() {
@@ -75,11 +75,11 @@ class PNE_Settings {
 		) as $slug => $label) { ?>
 			<input
 				type="checkbox"
-				name="pne_settings_auto_archive[<?=$slug?>]"
-				id="pne_options_auto_archive_<?=$slug?>"
+				name="pne_settings_auto_archive[<?php echo $slug; ?>]"
+				id="pne_options_auto_archive_<?php echo $slug; ?>"
 				<?php if (self::auto_archive($slug)) echo 'checked'; ?>
 			/>
-			<label for="pne_options_auto_archive_<?=$slug?>"><?=$label?></label>
+			<label for="pne_options_auto_archive_<?php echo $slug; ?>"><?php echo $label; ?></label>
 			<br />
 		<?php }
 	}
@@ -114,7 +114,7 @@ class PNE_Settings {
 	}
 	
 	function inject_meta_settings() { ?>
-		<p><?=__("The plugin can add post type specific information to pages and pages.  For instance, it can put the date and location in the content of each event.", 'press-news-events')?></p>
+		<p><?php _e("The plugin can add post type specific information to pages and pages.  For instance, it can put the date and location in the content of each event.", 'press-news-events'); ?></p>
 	<?php }
 	
 	
@@ -126,11 +126,11 @@ class PNE_Settings {
 		) as $slug => $label) { ?>
 			<input
 				type="checkbox"
-				name="pne_settings_inject_meta[<?=$slug?>]"
-				id="pne_options_inject_meta_<?=$slug?>"
+				name="pne_settings_inject_meta[<?php echo $slug; ?>]"
+				id="pne_options_inject_meta_<?php echo $slug; ?>"
 				<?php if (self::inject_meta($slug)) echo 'checked'; ?>
 			/>
-			<label for="pne_options_inject_meta_<?=$slug?>"><?=$label?></label><br />
+			<label for="pne_options_inject_meta_<?php echo $slug; ?>"><?php echo $label; ?></label><br />
 		<?php }
 	}
 	
@@ -176,9 +176,9 @@ class PNE_Settings {
 			type="checkbox"
 			name="pne_settings_press_releases[use_boilerplate]"
 			id="pne_options_inject_meta_use_boilerplate"
-			<?=checked(in_array('use_boilerplate', $options))?>
+			<?php echo checked(in_array('use_boilerplate', $options)); ?>
 		/>
-		<label for="pne_options_inject_meta_use_boilerplate"><?=__("Use a boilerplate for press releases")?></label>
+		<label for="pne_options_inject_meta_use_boilerplate"><?php _e("Use a boilerplate for press releases"); ?></label>
 	<?php }
 	
 	// Misc -------------------------------------------------------------------

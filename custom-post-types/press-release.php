@@ -53,15 +53,15 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 	
 	function boiler_plate() { ?>
 		<div class="wrap">
-			<h2><?=__("Press Release Boilerplate", 'press-news-events')?></h2>
-			<p><?=__("This press release boilerplate is shown at the bottom of all press releases.  Updating the boilerplate will update all past and future press releases.", 'press-news-events')?></p>
+			<h2><?php _e("Press Release Boilerplate", 'press-news-events'); ?></h2>
+			<p><?php _e("This press release boilerplate is shown at the bottom of all press releases.  Updating the boilerplate will update all past and future press releases.", 'press-news-events'); ?></p>
 			
 			<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 				<?php wp_nonce_field(plugin_basename(__FILE__), 'pne_nonce_press_release_boiler_plate'); ?>
 				
 				<?php wp_editor(get_option('pne_press_release_boilderplate'), 'pnepressreleaseboilderplate'); ?>
 				
-				<input type="submit" class="button-primary" value="<?=esc_attr(__("Save"))?>" />
+				<input type="submit" class="button-primary" value="<?php echo esc_attr(__("Save")); ?>" />
 			</form>
 		</div> <!-- .wrap -->
 	<?php }
